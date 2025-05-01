@@ -82,6 +82,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(186, 20);
             this.textBoxPassword.TabIndex = 4;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -95,6 +96,7 @@
             // 
             // comboBoxUserType
             // 
+            this.comboBoxUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUserType.FormattingEnabled = true;
             this.comboBoxUserType.Items.AddRange(new object[] {
             "Patient",

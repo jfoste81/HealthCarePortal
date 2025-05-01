@@ -36,10 +36,10 @@ namespace HealthCarePortal
             // 2) Check the result
             if (user is Patient patient)
             {
-                // Open the patient dashboard, passing the Patient object
-                //var dash = new DashboardPatientForm(patient);
-                //dash.Show();
-                //this.Hide();
+                //Open the patient dashboard, passing the Patient object
+                var dash = new DashboardPatientForm(patient);
+                dash.Show();
+                this.Hide();
                 Console.WriteLine("Patient logged in successfully."); // ************ UNCOMMENT ABOVE LINES ************
             }
             else if (user is Doctor doctor)

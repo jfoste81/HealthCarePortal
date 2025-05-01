@@ -142,12 +142,19 @@
             // 
             // comboBoxGender
             // 
+            this.comboBoxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.Items.AddRange(new object[] {
+            "Man",
+            "Woman",
+            "Non-Binary",
+            "Other",
+            "Prefer not to say"});
             this.comboBoxGender.Location = new System.Drawing.Point(358, 228);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(121, 28);
             this.comboBoxGender.TabIndex = 9;
+            this.comboBoxGender.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGender_SelectedIndexChanged);
             // 
             // textBoxPhone
             // 
@@ -167,6 +174,7 @@
             // 
             // comboBoxUserType
             // 
+            this.comboBoxUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUserType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxUserType.FormattingEnabled = true;
             this.comboBoxUserType.Items.AddRange(new object[] {
@@ -213,6 +221,7 @@
             this.buttonRegister.TabIndex = 16;
             this.buttonRegister.Text = "Submit";
             this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // labelUsername
             // 
