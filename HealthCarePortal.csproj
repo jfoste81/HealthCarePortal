@@ -47,22 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DashboardDoctorForm.cs">
+    <Compile Include="Forms\DashboardDoctorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DashboardDoctorForm.Designer.cs">
+    <Compile Include="Forms\DashboardDoctorForm.Designer.cs">
       <DependentUpon>DashboardDoctorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DashboardPatientForm.cs">
+    <Compile Include="Forms\DashboardPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DashboardPatientForm.Designer.cs">
+    <Compile Include="Forms\DashboardPatientForm.Designer.cs">
       <DependentUpon>DashboardPatientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Appointment.cs" />
@@ -77,19 +77,19 @@
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterForm.cs">
+    <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
+    <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DashboardDoctorForm.resx">
+    <EmbeddedResource Include="Forms\DashboardDoctorForm.resx">
       <DependentUpon>DashboardDoctorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DashboardPatientForm.resx">
+    <EmbeddedResource Include="Forms\DashboardPatientForm.resx">
       <DependentUpon>DashboardPatientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -101,7 +101,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegisterForm.resx">
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />

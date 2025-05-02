@@ -40,14 +40,14 @@ namespace HealthCarePortal.Forms
                 var dash = new DashboardPatientForm(patient);
                 dash.Show();
                 this.Hide();
-                Console.WriteLine("Patient logged in successfully."); // ************ UNCOMMENT ABOVE LINES ************
+                Console.WriteLine("Patient logged in successfully."); 
             }
             else if (user is Doctor doctor)
             {
-                //var dash = new DashboardDoctorForm(doctor);
-                //dash.Show();
-                //this.Hide();
-                Console.WriteLine("Doctor logged in successfully."); // ************ UNCOMMENT ABOVE LINES ************
+                var dash = new DashboardDoctorForm(doctor);
+                dash.Show();
+                this.Hide();
+                Console.WriteLine("Doctor logged in successfully."); 
             }
             else
             {
