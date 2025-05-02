@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HealthCarePortal
+namespace HealthCarePortal.Forms
 {
     public partial class DashboardPatientForm : Form
     {

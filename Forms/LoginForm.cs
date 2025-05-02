@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using HealthcarePortal.Models;
 using HealthCarePortal.Models;
 
-namespace HealthCarePortal
+namespace HealthCarePortal.Forms
 {
     public partial class LoginForm: Form
     {

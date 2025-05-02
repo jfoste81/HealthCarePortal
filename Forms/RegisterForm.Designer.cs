@@ -1,4 +1,4 @@
-﻿namespace HealthCarePortal
+﻿namespace HealthCarePortal.Forms
 {
     partial class RegisterForm
     {

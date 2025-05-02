@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HealthCarePortal.Models;
 
-namespace HealthCarePortal
+namespace HealthCarePortal.Forms
 {
     public partial class RegisterForm: Form
     {

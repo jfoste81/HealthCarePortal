@@ -1,4 +1,4 @@
-﻿namespace HealthCarePortal
+﻿namespace HealthCarePortal.Forms
 {
     partial class DashboardPatientForm
     {
@@ -30,6 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageOverview = new System.Windows.Forms.TabPage();
+            this.listViewNotifications = new System.Windows.Forms.ListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.labelOverviewNotifications = new System.Windows.Forms.Label();
             this.labelOverviewAppointments = new System.Windows.Forms.Label();
             this.listViewOverviewAppointments = new System.Windows.Forms.ListView();
@@ -37,38 +40,34 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tabPageInbox = new System.Windows.Forms.TabPage();
-            this.tabPageAppointments = new System.Windows.Forms.TabPage();
-            this.tabPageMedicalHistory = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.listViewMessages = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listViewNotifications = new System.Windows.Forms.ListView();
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPageAppointments = new System.Windows.Forms.TabPage();
+            this.buttonSchedule = new System.Windows.Forms.Button();
             this.listViewAppointments = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonSchedule = new System.Windows.Forms.Button();
-            this.groupBoxIllnesses = new System.Windows.Forms.GroupBox();
-            this.listViewIllnesses = new System.Windows.Forms.ListView();
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPageMedicalHistory = new System.Windows.Forms.TabPage();
             this.groupBoxPrescriptions = new System.Windows.Forms.GroupBox();
             this.listViewPrescriptions = new System.Windows.Forms.ListView();
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBoxIllnesses = new System.Windows.Forms.GroupBox();
+            this.listViewIllnesses = new System.Windows.Forms.ListView();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageOverview.SuspendLayout();
             this.tabPageInbox.SuspendLayout();
             this.tabPageAppointments.SuspendLayout();
             this.tabPageMedicalHistory.SuspendLayout();
-            this.groupBoxIllnesses.SuspendLayout();
             this.groupBoxPrescriptions.SuspendLayout();
+            this.groupBoxIllnesses.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -97,6 +96,31 @@
             this.tabPageOverview.TabIndex = 0;
             this.tabPageOverview.Text = "Overview";
             this.tabPageOverview.UseVisualStyleBackColor = true;
+            // 
+            // listViewNotifications
+            // 
+            this.listViewNotifications.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
+            this.columnHeader7});
+            this.listViewNotifications.FullRowSelect = true;
+            this.listViewNotifications.HideSelection = false;
+            this.listViewNotifications.Location = new System.Drawing.Point(554, 31);
+            this.listViewNotifications.MultiSelect = false;
+            this.listViewNotifications.Name = "listViewNotifications";
+            this.listViewNotifications.Size = new System.Drawing.Size(208, 350);
+            this.listViewNotifications.TabIndex = 5;
+            this.listViewNotifications.UseCompatibleStateImageBehavior = false;
+            this.listViewNotifications.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Date/Time";
+            this.columnHeader6.Width = 82;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Type";
+            this.columnHeader7.Width = 140;
             // 
             // labelOverviewNotifications
             // 
@@ -154,7 +178,6 @@
             // 
             // tabPageInbox
             // 
-            this.tabPageInbox.Controls.Add(this.button3);
             this.tabPageInbox.Controls.Add(this.button2);
             this.tabPageInbox.Controls.Add(this.listViewMessages);
             this.tabPageInbox.Location = new System.Drawing.Point(4, 22);
@@ -165,38 +188,14 @@
             this.tabPageInbox.Text = "Inbox";
             this.tabPageInbox.UseVisualStyleBackColor = true;
             // 
-            // tabPageAppointments
+            // button2
             // 
-            this.tabPageAppointments.Controls.Add(this.buttonSchedule);
-            this.tabPageAppointments.Controls.Add(this.listViewAppointments);
-            this.tabPageAppointments.Location = new System.Drawing.Point(4, 22);
-            this.tabPageAppointments.Name = "tabPageAppointments";
-            this.tabPageAppointments.Size = new System.Drawing.Size(768, 400);
-            this.tabPageAppointments.TabIndex = 2;
-            this.tabPageAppointments.Text = "Appointments";
-            this.tabPageAppointments.UseVisualStyleBackColor = true;
-            // 
-            // tabPageMedicalHistory
-            // 
-            this.tabPageMedicalHistory.Controls.Add(this.groupBoxPrescriptions);
-            this.tabPageMedicalHistory.Controls.Add(this.groupBoxIllnesses);
-            this.tabPageMedicalHistory.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMedicalHistory.Name = "tabPageMedicalHistory";
-            this.tabPageMedicalHistory.Size = new System.Drawing.Size(768, 400);
-            this.tabPageMedicalHistory.TabIndex = 3;
-            this.tabPageMedicalHistory.Text = "Medical History";
-            this.tabPageMedicalHistory.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(670, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonLogout_Click);
+            this.button2.Location = new System.Drawing.Point(654, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(83, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "New Message";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // listViewMessages
             // 
@@ -229,48 +228,25 @@
             this.columnHeader5.Text = "Subject";
             this.columnHeader5.Width = 579;
             // 
-            // button2
+            // tabPageAppointments
             // 
-            this.button2.Location = new System.Drawing.Point(654, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "New Message";
-            this.button2.UseVisualStyleBackColor = true;
+            this.tabPageAppointments.Controls.Add(this.buttonSchedule);
+            this.tabPageAppointments.Controls.Add(this.listViewAppointments);
+            this.tabPageAppointments.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAppointments.Name = "tabPageAppointments";
+            this.tabPageAppointments.Size = new System.Drawing.Size(768, 400);
+            this.tabPageAppointments.TabIndex = 2;
+            this.tabPageAppointments.Text = "Appointments";
+            this.tabPageAppointments.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonSchedule
             // 
-            this.button3.Location = new System.Drawing.Point(662, 372);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Reply";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // listViewNotifications
-            // 
-            this.listViewNotifications.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader6,
-            this.columnHeader7});
-            this.listViewNotifications.FullRowSelect = true;
-            this.listViewNotifications.HideSelection = false;
-            this.listViewNotifications.Location = new System.Drawing.Point(554, 31);
-            this.listViewNotifications.MultiSelect = false;
-            this.listViewNotifications.Name = "listViewNotifications";
-            this.listViewNotifications.Size = new System.Drawing.Size(208, 350);
-            this.listViewNotifications.TabIndex = 5;
-            this.listViewNotifications.UseCompatibleStateImageBehavior = false;
-            this.listViewNotifications.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Date/Time";
-            this.columnHeader6.Width = 82;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Type";
-            this.columnHeader7.Width = 140;
+            this.buttonSchedule.Location = new System.Drawing.Point(654, 9);
+            this.buttonSchedule.Name = "buttonSchedule";
+            this.buttonSchedule.Size = new System.Drawing.Size(75, 23);
+            this.buttonSchedule.TabIndex = 1;
+            this.buttonSchedule.Text = "New Appt";
+            this.buttonSchedule.UseVisualStyleBackColor = true;
             // 
             // listViewAppointments
             // 
@@ -295,49 +271,16 @@
             this.columnHeader9.Text = "Doctor";
             this.columnHeader9.Width = 182;
             // 
-            // buttonSchedule
+            // tabPageMedicalHistory
             // 
-            this.buttonSchedule.Location = new System.Drawing.Point(654, 9);
-            this.buttonSchedule.Name = "buttonSchedule";
-            this.buttonSchedule.Size = new System.Drawing.Size(75, 23);
-            this.buttonSchedule.TabIndex = 1;
-            this.buttonSchedule.Text = "New Appt";
-            this.buttonSchedule.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxIllnesses
-            // 
-            this.groupBoxIllnesses.Controls.Add(this.listViewIllnesses);
-            this.groupBoxIllnesses.Location = new System.Drawing.Point(24, 13);
-            this.groupBoxIllnesses.Name = "groupBoxIllnesses";
-            this.groupBoxIllnesses.Size = new System.Drawing.Size(359, 384);
-            this.groupBoxIllnesses.TabIndex = 0;
-            this.groupBoxIllnesses.TabStop = false;
-            this.groupBoxIllnesses.Text = "Illnesses";
-            // 
-            // listViewIllnesses
-            // 
-            this.listViewIllnesses.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader10,
-            this.columnHeader11});
-            this.listViewIllnesses.FullRowSelect = true;
-            this.listViewIllnesses.HideSelection = false;
-            this.listViewIllnesses.Location = new System.Drawing.Point(7, 20);
-            this.listViewIllnesses.MultiSelect = false;
-            this.listViewIllnesses.Name = "listViewIllnesses";
-            this.listViewIllnesses.Size = new System.Drawing.Size(346, 358);
-            this.listViewIllnesses.TabIndex = 0;
-            this.listViewIllnesses.UseCompatibleStateImageBehavior = false;
-            this.listViewIllnesses.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Date Contracted";
-            this.columnHeader10.Width = 95;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "Name";
-            this.columnHeader11.Width = 249;
+            this.tabPageMedicalHistory.Controls.Add(this.groupBoxPrescriptions);
+            this.tabPageMedicalHistory.Controls.Add(this.groupBoxIllnesses);
+            this.tabPageMedicalHistory.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMedicalHistory.Name = "tabPageMedicalHistory";
+            this.tabPageMedicalHistory.Size = new System.Drawing.Size(768, 400);
+            this.tabPageMedicalHistory.TabIndex = 3;
+            this.tabPageMedicalHistory.Text = "Medical History";
+            this.tabPageMedicalHistory.UseVisualStyleBackColor = true;
             // 
             // groupBoxPrescriptions
             // 
@@ -380,6 +323,52 @@
             this.columnHeader14.Text = "Notes";
             this.columnHeader14.Width = 172;
             // 
+            // groupBoxIllnesses
+            // 
+            this.groupBoxIllnesses.Controls.Add(this.listViewIllnesses);
+            this.groupBoxIllnesses.Location = new System.Drawing.Point(24, 13);
+            this.groupBoxIllnesses.Name = "groupBoxIllnesses";
+            this.groupBoxIllnesses.Size = new System.Drawing.Size(359, 384);
+            this.groupBoxIllnesses.TabIndex = 0;
+            this.groupBoxIllnesses.TabStop = false;
+            this.groupBoxIllnesses.Text = "Illnesses";
+            // 
+            // listViewIllnesses
+            // 
+            this.listViewIllnesses.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
+            this.columnHeader11});
+            this.listViewIllnesses.FullRowSelect = true;
+            this.listViewIllnesses.HideSelection = false;
+            this.listViewIllnesses.Location = new System.Drawing.Point(7, 20);
+            this.listViewIllnesses.MultiSelect = false;
+            this.listViewIllnesses.Name = "listViewIllnesses";
+            this.listViewIllnesses.Size = new System.Drawing.Size(346, 358);
+            this.listViewIllnesses.TabIndex = 0;
+            this.listViewIllnesses.UseCompatibleStateImageBehavior = false;
+            this.listViewIllnesses.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Date Contracted";
+            this.columnHeader10.Width = 95;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Name";
+            this.columnHeader11.Width = 249;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(670, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Logout";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonLogout_Click);
+            // 
             // DashboardPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,8 +385,8 @@
             this.tabPageInbox.ResumeLayout(false);
             this.tabPageAppointments.ResumeLayout(false);
             this.tabPageMedicalHistory.ResumeLayout(false);
-            this.groupBoxIllnesses.ResumeLayout(false);
             this.groupBoxPrescriptions.ResumeLayout(false);
+            this.groupBoxIllnesses.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -416,7 +405,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Label labelOverviewNotifications;
         private System.Windows.Forms.Label labelOverviewAppointments;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListView listViewMessages;
         private System.Windows.Forms.ColumnHeader columnHeader3;
