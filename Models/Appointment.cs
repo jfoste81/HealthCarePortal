@@ -14,11 +14,11 @@ namespace HealthCarePortal.Models
         public DateTime Timestamp { get; set; }
         public string Description { get; set; }
 
-        public Appointment(int id, string pat, string doc, DateTime when, string desc)
+        public Appointment(int id, string patientName, string doctorName, DateTime when, string desc)
         {
             Id = id;
-            PatientName = pat;
-            DoctorName = doc;
+            PatientName = patientName;
+            DoctorName = doctorName;
             Timestamp = when;
             Description = desc;
         }

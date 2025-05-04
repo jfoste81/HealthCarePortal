@@ -79,6 +79,7 @@ namespace HealthCarePortal.Forms
             {
                 var item = new ListViewItem(appt.Timestamp.ToString("g"));
                 item.SubItems.Add(appt.DoctorName);
+                item.SubItems.Add(appt.Description);
                 listViewAppointments.Items.Add(item);
             }
         }
@@ -161,21 +162,58 @@ namespace HealthCarePortal.Forms
             LoadMessages();
         }
 
-        //private void buttonSchedule_Click(object sender, EventArgs e)
-        //{
-        //    var form = new AppointmentForm(_patient);
-        //    if (form.ShowDialog() == DialogResult.OK)
-        //        LoadAppointments();
-        //}
+        private void buttonSchedule_Click(object sender, EventArgs e)
+        {
+            var form = new AppointmentForm(_patient);
+            if (form.ShowDialog() == DialogResult.OK)
+                LoadAppointments();
+        }
 
-        //private void buttonEditAppointment_Click(object sender, EventArgs e)
-        //{
-        //    if (listViewAppointments.SelectedItems.Count == 0) return;
-        //    var appt = _patient.Appointments[listViewAppointments.SelectedIndices[0]];
-        //    var form = new AppointmentForm(_patient, appt);
-        //    if (form.ShowDialog() == DialogResult.OK)
-        //        LoadAppointments();
-        //}
+        private void ButtonCancelAppt_Click(object sender, EventArgs e)
+        {
+            // No selection? nothing to do.
+            if (listViewAppointments.SelectedIndices.Count == 0) return;
+
+            // Find the appointment in the same order you displayed it
+            int idx = listViewAppointments.SelectedIndices[0];
+            var appt = _patient.Appointments
+                               .OrderBy(a => a.Timestamp)
+                               .ElementAt(idx);
+
+            // Confirm with the user
+            var result = MessageBox.Show(
+                $"Cancel your appointment on {appt.Timestamp:g} with Dr. {appt.DoctorName}?",
+                "Confirm Cancellation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+            if (result != DialogResult.Yes) return;
+
+            // Remove from patient
+            _patient.Appointments.Remove(appt);
+
+            // Also remove from the doctor’s schedule
+            var doctor = Portal.Instance.Doctors
+                             .FirstOrDefault(d => d.Name == appt.DoctorName);
+            if (doctor != null)
+                doctor.Appointments.RemoveAll(a => a.Id == appt.Id);
+
+            // Add notifications
+            _patient.Notifications.Add(new Notification(
+                "Appointment",
+                $"You cancelled your appointment on {appt.Timestamp:g} with Dr. {appt.DoctorName}."
+            ));
+            if (doctor != null)
+                doctor.Notifications.Add(new Notification(
+                    "Appointment",
+                    $"{_patient.Name} cancelled the appointment on {appt.Timestamp:g}."
+                ));
+
+            // Refresh UI
+            LoadAppointments();
+            LoadOverview();
+        }
+
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {

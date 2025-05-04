@@ -12,10 +12,10 @@ namespace HealthCarePortal.Models
         public string Description { get; set; }
         public DateTime Timestamp { get; set; }
 
-        public Notification(string type, string desc)
+        public Notification(string type, string description)
         {
             Type = type;
-            Description = desc;
+            Description = description;
             Timestamp = DateTime.Now;
         }
     }

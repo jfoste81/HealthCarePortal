@@ -164,33 +164,34 @@ namespace HealthCarePortal.Forms
             listViewSchedule.Items.Clear();
             var upcoming = _doctor.Patients
                 .SelectMany(p => p.Appointments)
-                .Where(a => a.Timestamp >= DateTime.Now)
+                .Where(a => a.Timestamp >= DateTime.Today)
                 .OrderBy(a => a.Timestamp);
             foreach (var appt in upcoming)
             {
                 var item = new ListViewItem(appt.Timestamp.ToString("g"));
                 item.SubItems.Add(appt.PatientName);
+                item.SubItems.Add(appt.Description);
                 listViewSchedule.Items.Add(item);
             }
         }
 
-        //private void ButtonEditAppointment_Click(object sender, EventArgs e)
-        //{
-        //    if (listViewSchedule.SelectedIndices.Count == 0) return;
-        //    int idx = listViewSchedule.SelectedIndices[0];
-        //    var apptList = _doctor.Patients
-        //        .SelectMany(p => p.Appointments)
-        //        .OrderBy(a => a.Timestamp)
-        //        .ToList();
-        //    var appt = apptList[idx];
+        private void ButtonEditAppointment_Click(object sender, EventArgs e)
+        {
+            if (listViewSchedule.SelectedIndices.Count == 0) return;
+            int idx = listViewSchedule.SelectedIndices[0];
+            var apptList = _doctor.Patients
+                .SelectMany(p => p.Appointments)
+                .OrderBy(a => a.Timestamp)
+                .ToList();
+            var appt = apptList[idx];
 
-        //    using var form = new AppointmentForm(_doctor, appt);
-        //    if (form.ShowDialog() == DialogResult.OK)
-        //    {
-        //        LoadSchedule();
-        //        LoadOverview();
-        //    }
-        //}
+            using var form = new AppointmentForm(_doctor, appt);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadSchedule();
+                LoadOverview();
+            }
+        }
 
         private void ButtonCancelAppointment_Click(object sender, EventArgs e)
         {

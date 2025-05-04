@@ -61,6 +61,8 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonCancelAppt = new System.Windows.Forms.Button();
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControlDashboard.SuspendLayout();
             this.tabPageOverview.SuspendLayout();
             this.tabPageInbox.SuspendLayout();
@@ -233,6 +235,7 @@
             // 
             // tabPageAppointments
             // 
+            this.tabPageAppointments.Controls.Add(this.buttonCancelAppt);
             this.tabPageAppointments.Controls.Add(this.buttonSchedule);
             this.tabPageAppointments.Controls.Add(this.listViewAppointments);
             this.tabPageAppointments.Location = new System.Drawing.Point(4, 22);
@@ -244,20 +247,22 @@
             // 
             // buttonSchedule
             // 
-            this.buttonSchedule.Location = new System.Drawing.Point(654, 9);
+            this.buttonSchedule.Location = new System.Drawing.Point(609, 367);
             this.buttonSchedule.Name = "buttonSchedule";
             this.buttonSchedule.Size = new System.Drawing.Size(75, 23);
             this.buttonSchedule.TabIndex = 1;
             this.buttonSchedule.Text = "New Appt";
             this.buttonSchedule.UseVisualStyleBackColor = true;
+            this.buttonSchedule.Click += new System.EventHandler(this.buttonSchedule_Click);
             // 
             // listViewAppointments
             // 
             this.listViewAppointments.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader8,
-            this.columnHeader9});
+            this.columnHeader9,
+            this.Description});
             this.listViewAppointments.HideSelection = false;
-            this.listViewAppointments.Location = new System.Drawing.Point(3, 38);
+            this.listViewAppointments.Location = new System.Drawing.Point(3, 3);
             this.listViewAppointments.Name = "listViewAppointments";
             this.listViewAppointments.Size = new System.Drawing.Size(762, 359);
             this.listViewAppointments.TabIndex = 0;
@@ -372,6 +377,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
+            // buttonCancelAppt
+            // 
+            this.buttonCancelAppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonCancelAppt.Location = new System.Drawing.Point(690, 367);
+            this.buttonCancelAppt.Name = "buttonCancelAppt";
+            this.buttonCancelAppt.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelAppt.TabIndex = 2;
+            this.buttonCancelAppt.Text = "Cancel";
+            this.buttonCancelAppt.UseVisualStyleBackColor = true;
+            this.buttonCancelAppt.Click += new System.EventHandler(this.ButtonCancelAppt_Click);
+            // 
             // DashboardPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,5 +445,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.Button buttonCancelAppt;
+        private System.Windows.Forms.ColumnHeader Description;
     }
 }

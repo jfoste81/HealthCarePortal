@@ -66,6 +66,7 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView1 = new System.Windows.Forms.ListView();
             this.buttonLogout = new System.Windows.Forms.Button();
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControlDoctor.SuspendLayout();
             this.tabPageOverview.SuspendLayout();
             this.groupBoxNotificationsOverview.SuspendLayout();
@@ -203,6 +204,7 @@
             this.listViewTodayAppointments.TabIndex = 0;
             this.listViewTodayAppointments.UseCompatibleStateImageBehavior = false;
             this.listViewTodayAppointments.View = System.Windows.Forms.View.Details;
+            this.listViewTodayAppointments.DoubleClick += new System.EventHandler(this.ButtonEditAppointment_Click);
             // 
             // Time
             // 
@@ -362,13 +364,15 @@
             this.buttonEditAppointment.TabIndex = 2;
             this.buttonEditAppointment.Text = "Edit Appt";
             this.buttonEditAppointment.UseVisualStyleBackColor = true;
+            this.buttonEditAppointment.Click += new System.EventHandler(this.ButtonEditAppointment_Click);
             // 
             // listViewSchedule
             // 
             this.listViewSchedule.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader14,
             this.columnHeader15,
-            this.columnHeader16});
+            this.columnHeader16,
+            this.Description});
             this.listViewSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.listViewSchedule.FullRowSelect = true;
             this.listViewSchedule.HideSelection = false;
@@ -412,6 +416,10 @@
             this.buttonLogout.TabIndex = 1;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
+            // 
+            // Description
+            // 
+            this.Description.Text = "ColumnDescription";
             // 
             // DashboardDoctorForm
             // 
@@ -475,5 +483,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.Button buttonCancelAppointment;
+        private System.Windows.Forms.ColumnHeader Description;
     }
 }

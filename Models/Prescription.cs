@@ -12,11 +12,11 @@ namespace HealthCarePortal.Models
         public string Dosage { get; set; }
         public string Description { get; set; }
 
-        public Prescription(string name, string dosage, string desc)
+        public Prescription(string name, string dosage, string description)
         {
             Name = name;
             Dosage = dosage;
-            Description = desc;
+            Description = description;
         }
     }
 }

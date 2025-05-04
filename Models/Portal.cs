@@ -17,17 +17,17 @@ namespace HealthCarePortal.Models
 
         private Portal() { }
 
-        public bool AddPatient(Patient p)
+        public bool AddPatient(Patient patient)
         {
-            if (Patients.Any(x => x.Username == p.Username)) return false;
-            Patients.Add(p);
+            if (Patients.Any(x => x.Username == patient.Username)) return false;
+            Patients.Add(patient);
             return true;
         }
 
-        public bool AddDoctor(Doctor d)
+        public bool AddDoctor(Doctor doctor)
         {
-            if (Doctors.Any(x => x.Username == d.Username)) return false;
-            Doctors.Add(d);
+            if (Doctors.Any(x => x.Username == doctor.Username)) return false;
+            Doctors.Add(doctor);
             return true;
         }
 
