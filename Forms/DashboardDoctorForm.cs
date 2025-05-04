@@ -15,6 +15,7 @@ namespace HealthCarePortal.Forms
     {
         private readonly Doctor _doctor;
         private List<Patient> _filteredPatients;
+        private List<UserMessage> _displayedMessages;
 
         public DashboardDoctorForm(Doctor doctor)
         {
@@ -22,20 +23,7 @@ namespace HealthCarePortal.Forms
             _doctor = doctor;
             Text = $"Dr. {_doctor.Name}";
 
-            // Patients tab wiring
-            listViewPatients.DoubleClick += ListViewPatients_DoubleClick;
-
-            // Inbox tab wiring
-            listViewInbox.DoubleClick += ListViewInbox_DoubleClick;
-
-            // Overview tab wiring 
-            listViewNotificationsOverview.View = View.List;
-            listViewNotificationsOverview.DoubleClick += NotificationsOverview_DoubleClick;
-
-            // Schedule tab wiring 
-            listViewSchedule.DoubleClick += ListViewSchedule_DoubleClick;
-            buttonEditAppointment.Click += ButtonEditAppointment_Click;
-            buttonCancelAppointment.Click += ButtonCancelAppointment_Click;
+            listViewNotificationsOverview.View = View.Details;
 
             // Logout 
             buttonLogout.Click += (s, e) => {
@@ -68,22 +56,24 @@ namespace HealthCarePortal.Forms
             }
         }
 
-        private void ListViewPatients_DoubleClick(object sender, EventArgs e)
-        {
-            if (listViewPatients.SelectedIndices.Count == 0) return;
-            int idx = listViewPatients.SelectedIndices[0];
-            var patient = _filteredPatients[idx];
+        //private void ListViewPatients_DoubleClick(object sender, EventArgs e)
+        //{
+        //    if (listViewPatients.SelectedIndices.Count == 0) return;
+        //    int idx = listViewPatients.SelectedIndices[0];
+        //    var patient = _filteredPatients[idx];
 
-            using var detail = new PatientDetailForm(_doctor, patient);
-            detail.ShowDialog();
-            LoadPatients();
-        }
+        //    using var detail = new PatientDetailForm(_doctor, patient);
+        //    detail.ShowDialog();
+        //    LoadPatients();
+        //}
 
         // Inbox Tab 
         private void LoadInbox()
         {
+            _displayedMessages = _doctor.Inbox.OrderByDescending(m => m.Timestamp).ToList();
+
             listViewInbox.Items.Clear();
-            foreach (var msg in _doctor.Inbox.OrderByDescending(m => m.Timestamp))
+            foreach (var msg in _displayedMessages)
             {
                 var item = new ListViewItem(msg.Timestamp.ToString("g"));
                 item.SubItems.Add(msg.Author);
@@ -94,23 +84,26 @@ namespace HealthCarePortal.Forms
 
         private void ListViewInbox_DoubleClick(object sender, EventArgs e)
         {
-            OpenSelectedMessageDetail();
-        }
-
-        private void ButtonViewReply_Click(object sender, EventArgs e)
-        {
-            OpenSelectedMessageDetail();
-        }
-
-        private void OpenSelectedMessageDetail()
-        {
             if (listViewInbox.SelectedIndices.Count == 0) return;
-            int idx = listViewInbox.SelectedIndices[0];
-            var msg = _doctor.Inbox.OrderByDescending(m => m.Timestamp).ElementAt(idx);
-
+            var msg = _displayedMessages[listViewInbox.SelectedIndices[0]];
             using var detail = new MessageDetailForm(_doctor, msg);
             detail.ShowDialog();
             LoadInbox();
+        }
+
+        private void ButtonNewMessage_Click(object sender, EventArgs e)
+        {
+            using var compose = new MessageForm(
+                sender: _doctor,   // doctor is sending
+                recipient: null,      // show all patients
+                subject: ""         // blank subject
+            );
+
+            if (compose.ShowDialog() == DialogResult.OK)
+            {
+                // reload the inbox so sent messages show up if the doctor replies to themselves
+                LoadInbox();
+            }
         }
 
         // Overview Tab 
@@ -130,13 +123,19 @@ namespace HealthCarePortal.Forms
             }
 
             // Notifications (in single-column ListView)
+            // Notifications with separate columns
             listViewNotificationsOverview.Items.Clear();
             foreach (var n in _doctor.Notifications
                                      .OrderByDescending(nf => nf.Timestamp))
             {
-                listViewNotificationsOverview.Items.Add(
-                  $"{n.Timestamp:g} – {n.Type}: {n.Description}"
-                );
+                // First column = timestamp
+                var item = new ListViewItem(n.Timestamp.ToString("g"));
+                // Second column = type
+                item.SubItems.Add(n.Type);
+                // Third column = description
+                item.SubItems.Add(n.Description);
+
+                listViewNotificationsOverview.Items.Add(item);
             }
         }
 
@@ -175,15 +174,23 @@ namespace HealthCarePortal.Forms
             }
         }
 
-        private void ListViewSchedule_DoubleClick(object sender, EventArgs e)
-        {
-            EditSelectedAppointment();
-        }
+        //private void ButtonEditAppointment_Click(object sender, EventArgs e)
+        //{
+        //    if (listViewSchedule.SelectedIndices.Count == 0) return;
+        //    int idx = listViewSchedule.SelectedIndices[0];
+        //    var apptList = _doctor.Patients
+        //        .SelectMany(p => p.Appointments)
+        //        .OrderBy(a => a.Timestamp)
+        //        .ToList();
+        //    var appt = apptList[idx];
 
-        private void ButtonEditAppointment_Click(object sender, EventArgs e)
-        {
-            EditSelectedAppointment();
-        }
+        //    using var form = new AppointmentForm(_doctor, appt);
+        //    if (form.ShowDialog() == DialogResult.OK)
+        //    {
+        //        LoadSchedule();
+        //        LoadOverview();
+        //    }
+        //}
 
         private void ButtonCancelAppointment_Click(object sender, EventArgs e)
         {
@@ -220,24 +227,6 @@ namespace HealthCarePortal.Forms
                     $"You cancelled the appointment on {appt.Timestamp:g} with {patient.Name}."
                 ));
 
-                LoadSchedule();
-                LoadOverview();
-            }
-        }
-
-        private void EditSelectedAppointment()
-        {
-            if (listViewSchedule.SelectedIndices.Count == 0) return;
-            int idx = listViewSchedule.SelectedIndices[0];
-            var apptList = _doctor.Patients
-                .SelectMany(p => p.Appointments)
-                .OrderBy(a => a.Timestamp)
-                .ToList();
-            var appt = apptList[idx];
-
-            using var form = new AppointmentForm(_doctor, appt);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
                 LoadSchedule();
                 LoadOverview();
             }

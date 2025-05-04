@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlDashboard = new System.Windows.Forms.TabControl();
             this.tabPageOverview = new System.Windows.Forms.TabPage();
             this.listViewNotifications = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -61,7 +61,7 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.tabControlDashboard.SuspendLayout();
             this.tabPageOverview.SuspendLayout();
             this.tabPageInbox.SuspendLayout();
             this.tabPageAppointments.SuspendLayout();
@@ -70,17 +70,17 @@
             this.groupBoxIllnesses.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabControlDashboard
             // 
-            this.tabControl1.Controls.Add(this.tabPageOverview);
-            this.tabControl1.Controls.Add(this.tabPageInbox);
-            this.tabControl1.Controls.Add(this.tabPageAppointments);
-            this.tabControl1.Controls.Add(this.tabPageMedicalHistory);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 426);
-            this.tabControl1.TabIndex = 0;
+            this.tabControlDashboard.Controls.Add(this.tabPageOverview);
+            this.tabControlDashboard.Controls.Add(this.tabPageInbox);
+            this.tabControlDashboard.Controls.Add(this.tabPageAppointments);
+            this.tabControlDashboard.Controls.Add(this.tabPageMedicalHistory);
+            this.tabControlDashboard.Location = new System.Drawing.Point(12, 12);
+            this.tabControlDashboard.Name = "tabControlDashboard";
+            this.tabControlDashboard.SelectedIndex = 0;
+            this.tabControlDashboard.Size = new System.Drawing.Size(776, 426);
+            this.tabControlDashboard.TabIndex = 0;
             // 
             // tabPageOverview
             // 
@@ -111,11 +111,12 @@
             this.listViewNotifications.TabIndex = 5;
             this.listViewNotifications.UseCompatibleStateImageBehavior = false;
             this.listViewNotifications.View = System.Windows.Forms.View.Details;
+            this.listViewNotifications.DoubleClick += new System.EventHandler(this.ListViewNotifications_DoubleClick);
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Date/Time";
-            this.columnHeader6.Width = 82;
+            this.columnHeader6.Width = 118;
             // 
             // columnHeader7
             // 
@@ -161,7 +162,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Date/Time";
-            this.columnHeader1.Width = 114;
+            this.columnHeader1.Width = 220;
             // 
             // columnHeader2
             // 
@@ -196,6 +197,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "New Message";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.buttonNewMessage_Click);
             // 
             // listViewMessages
             // 
@@ -212,16 +214,17 @@
             this.listViewMessages.TabIndex = 0;
             this.listViewMessages.UseCompatibleStateImageBehavior = false;
             this.listViewMessages.View = System.Windows.Forms.View.Details;
+            this.listViewMessages.DoubleClick += new System.EventHandler(this.ListViewMessages_DoubleClick);
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Date";
-            this.columnHeader3.Width = 73;
+            this.columnHeader3.Width = 233;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "From";
-            this.columnHeader4.Width = 121;
+            this.columnHeader4.Width = 162;
             // 
             // columnHeader5
             // 
@@ -264,7 +267,7 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "Date";
-            this.columnHeader8.Width = 168;
+            this.columnHeader8.Width = 239;
             // 
             // columnHeader9
             // 
@@ -351,7 +354,7 @@
             // columnHeader10
             // 
             this.columnHeader10.Text = "Date Contracted";
-            this.columnHeader10.Width = 95;
+            this.columnHeader10.Width = 152;
             // 
             // columnHeader11
             // 
@@ -375,11 +378,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlDashboard);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DashboardPatientForm";
             this.Text = "DashboardPatientForm";
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlDashboard.ResumeLayout(false);
             this.tabPageOverview.ResumeLayout(false);
             this.tabPageOverview.PerformLayout();
             this.tabPageInbox.ResumeLayout(false);
@@ -393,7 +396,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlDashboard;
         private System.Windows.Forms.TabPage tabPageOverview;
         private System.Windows.Forms.TabPage tabPageInbox;
         private System.Windows.Forms.TabPage tabPageAppointments;

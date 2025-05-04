@@ -44,8 +44,6 @@
             this.Time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Patients = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPagePatients = new System.Windows.Forms.TabPage();
-            this.tabPageInbox = new System.Windows.Forms.TabPage();
-            this.tabPageSchedule = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listViewPatients = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,28 +51,30 @@
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonLogout = new System.Windows.Forms.Button();
-            this.buttonNewMessage = new System.Windows.Forms.Button();
+            this.tabPageInbox = new System.Windows.Forms.TabPage();
             this.listViewInbox = new System.Windows.Forms.ListView();
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.buttonNewMessage = new System.Windows.Forms.Button();
+            this.tabPageSchedule = new System.Windows.Forms.TabPage();
+            this.buttonCancelAppointment = new System.Windows.Forms.Button();
+            this.buttonEditAppointment = new System.Windows.Forms.Button();
             this.listViewSchedule = new System.Windows.Forms.ListView();
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonEditAppointment = new System.Windows.Forms.Button();
-            this.buttonCancelAppointment = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.tabControlDoctor.SuspendLayout();
             this.tabPageOverview.SuspendLayout();
             this.groupBoxNotificationsOverview.SuspendLayout();
             this.groupBoxMessagesOverview.SuspendLayout();
             this.groupBoxToday.SuspendLayout();
             this.tabPagePatients.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPageInbox.SuspendLayout();
             this.tabPageSchedule.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlDoctor
@@ -126,6 +126,7 @@
             this.listViewNotificationsOverview.TabIndex = 0;
             this.listViewNotificationsOverview.UseCompatibleStateImageBehavior = false;
             this.listViewNotificationsOverview.View = System.Windows.Forms.View.Details;
+            this.listViewNotificationsOverview.DoubleClick += new System.EventHandler(this.NotificationsOverview_DoubleClick);
             // 
             // columnHeader4
             // 
@@ -223,31 +224,6 @@
             this.tabPagePatients.Text = "Patients";
             this.tabPagePatients.UseVisualStyleBackColor = true;
             // 
-            // tabPageInbox
-            // 
-            this.tabPageInbox.Controls.Add(this.listViewInbox);
-            this.tabPageInbox.Controls.Add(this.buttonNewMessage);
-            this.tabPageInbox.Location = new System.Drawing.Point(4, 22);
-            this.tabPageInbox.Name = "tabPageInbox";
-            this.tabPageInbox.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInbox.Size = new System.Drawing.Size(768, 400);
-            this.tabPageInbox.TabIndex = 1;
-            this.tabPageInbox.Text = "Inbox";
-            this.tabPageInbox.UseVisualStyleBackColor = true;
-            // 
-            // tabPageSchedule
-            // 
-            this.tabPageSchedule.Controls.Add(this.buttonCancelAppointment);
-            this.tabPageSchedule.Controls.Add(this.buttonEditAppointment);
-            this.tabPageSchedule.Controls.Add(this.listViewSchedule);
-            this.tabPageSchedule.Controls.Add(this.listView1);
-            this.tabPageSchedule.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSchedule.Name = "tabPageSchedule";
-            this.tabPageSchedule.Size = new System.Drawing.Size(768, 400);
-            this.tabPageSchedule.TabIndex = 2;
-            this.tabPageSchedule.Text = "Schedule";
-            this.tabPageSchedule.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listViewPatients);
@@ -301,23 +277,17 @@
             this.columnHeader10.Text = "Phone";
             this.columnHeader10.Width = 273;
             // 
-            // buttonLogout
+            // tabPageInbox
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(669, 5);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(75, 23);
-            this.buttonLogout.TabIndex = 1;
-            this.buttonLogout.Text = "Logout";
-            this.buttonLogout.UseVisualStyleBackColor = true;
-            // 
-            // buttonNewMessage
-            // 
-            this.buttonNewMessage.Location = new System.Drawing.Point(653, 6);
-            this.buttonNewMessage.Name = "buttonNewMessage";
-            this.buttonNewMessage.Size = new System.Drawing.Size(83, 23);
-            this.buttonNewMessage.TabIndex = 0;
-            this.buttonNewMessage.Text = "New Message";
-            this.buttonNewMessage.UseVisualStyleBackColor = true;
+            this.tabPageInbox.Controls.Add(this.listViewInbox);
+            this.tabPageInbox.Controls.Add(this.buttonNewMessage);
+            this.tabPageInbox.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInbox.Name = "tabPageInbox";
+            this.tabPageInbox.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageInbox.Size = new System.Drawing.Size(768, 400);
+            this.tabPageInbox.TabIndex = 1;
+            this.tabPageInbox.Text = "Inbox";
+            this.tabPageInbox.UseVisualStyleBackColor = true;
             // 
             // listViewInbox
             // 
@@ -334,6 +304,7 @@
             this.listViewInbox.TabIndex = 1;
             this.listViewInbox.UseCompatibleStateImageBehavior = false;
             this.listViewInbox.View = System.Windows.Forms.View.Details;
+            this.listViewInbox.DoubleClick += new System.EventHandler(this.ListViewInbox_DoubleClick);
             // 
             // columnHeader11
             // 
@@ -350,14 +321,47 @@
             this.columnHeader13.Text = "Subject";
             this.columnHeader13.Width = 433;
             // 
-            // listView1
+            // buttonNewMessage
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(4, 4);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(761, 360);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.buttonNewMessage.Location = new System.Drawing.Point(653, 6);
+            this.buttonNewMessage.Name = "buttonNewMessage";
+            this.buttonNewMessage.Size = new System.Drawing.Size(83, 23);
+            this.buttonNewMessage.TabIndex = 0;
+            this.buttonNewMessage.Text = "New Message";
+            this.buttonNewMessage.UseVisualStyleBackColor = true;
+            this.buttonNewMessage.Click += new System.EventHandler(this.ButtonNewMessage_Click);
+            // 
+            // tabPageSchedule
+            // 
+            this.tabPageSchedule.Controls.Add(this.buttonCancelAppointment);
+            this.tabPageSchedule.Controls.Add(this.buttonEditAppointment);
+            this.tabPageSchedule.Controls.Add(this.listViewSchedule);
+            this.tabPageSchedule.Controls.Add(this.listView1);
+            this.tabPageSchedule.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSchedule.Name = "tabPageSchedule";
+            this.tabPageSchedule.Size = new System.Drawing.Size(768, 400);
+            this.tabPageSchedule.TabIndex = 2;
+            this.tabPageSchedule.Text = "Schedule";
+            this.tabPageSchedule.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancelAppointment
+            // 
+            this.buttonCancelAppointment.Location = new System.Drawing.Point(653, 370);
+            this.buttonCancelAppointment.Name = "buttonCancelAppointment";
+            this.buttonCancelAppointment.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelAppointment.TabIndex = 3;
+            this.buttonCancelAppointment.Text = "Cancel Appt";
+            this.buttonCancelAppointment.UseVisualStyleBackColor = true;
+            this.buttonCancelAppointment.Click += new System.EventHandler(this.ButtonCancelAppointment_Click);
+            // 
+            // buttonEditAppointment
+            // 
+            this.buttonEditAppointment.Location = new System.Drawing.Point(559, 370);
+            this.buttonEditAppointment.Name = "buttonEditAppointment";
+            this.buttonEditAppointment.Size = new System.Drawing.Size(88, 23);
+            this.buttonEditAppointment.TabIndex = 2;
+            this.buttonEditAppointment.Text = "Edit Appt";
+            this.buttonEditAppointment.UseVisualStyleBackColor = true;
             // 
             // listViewSchedule
             // 
@@ -391,23 +395,23 @@
             this.columnHeader16.Text = "Patient";
             this.columnHeader16.Width = 445;
             // 
-            // buttonEditAppointment
+            // listView1
             // 
-            this.buttonEditAppointment.Location = new System.Drawing.Point(559, 370);
-            this.buttonEditAppointment.Name = "buttonEditAppointment";
-            this.buttonEditAppointment.Size = new System.Drawing.Size(88, 23);
-            this.buttonEditAppointment.TabIndex = 2;
-            this.buttonEditAppointment.Text = "Edit Appt";
-            this.buttonEditAppointment.UseVisualStyleBackColor = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(4, 4);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(761, 360);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
-            // buttonCancelAppointment
+            // buttonLogout
             // 
-            this.buttonCancelAppointment.Location = new System.Drawing.Point(653, 370);
-            this.buttonCancelAppointment.Name = "buttonCancelAppointment";
-            this.buttonCancelAppointment.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancelAppointment.TabIndex = 3;
-            this.buttonCancelAppointment.Text = "Cancel Appt";
-            this.buttonCancelAppointment.UseVisualStyleBackColor = true;
+            this.buttonLogout.Location = new System.Drawing.Point(669, 5);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogout.TabIndex = 1;
+            this.buttonLogout.Text = "Logout";
+            this.buttonLogout.UseVisualStyleBackColor = true;
             // 
             // DashboardDoctorForm
             // 
@@ -424,9 +428,9 @@
             this.groupBoxMessagesOverview.ResumeLayout(false);
             this.groupBoxToday.ResumeLayout(false);
             this.tabPagePatients.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.tabPageInbox.ResumeLayout(false);
             this.tabPageSchedule.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

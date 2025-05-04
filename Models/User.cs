@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HealthcarePortal.Models
+namespace HealthCarePortal.Models
 {
     public abstract class User
     {

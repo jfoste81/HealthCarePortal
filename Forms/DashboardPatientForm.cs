@@ -14,6 +14,7 @@ namespace HealthCarePortal.Forms
     public partial class DashboardPatientForm : Form
     {
         private readonly Patient _patient;
+        private List<UserMessage> _displayedMessages;
 
         public DashboardPatientForm(Patient patient)
         {
@@ -56,8 +57,13 @@ namespace HealthCarePortal.Forms
 
         private void LoadMessages()
         {
+            // Sort descending once and keep it
+            _displayedMessages = _patient.Inbox
+                                         .OrderByDescending(m => m.Timestamp)
+                                         .ToList();
+
             listViewMessages.Items.Clear();
-            foreach (var msg in _patient.Inbox)
+            foreach (var msg in _displayedMessages)
             {
                 var item = new ListViewItem(msg.Timestamp.ToString("g"));
                 item.SubItems.Add(msg.Author);
@@ -112,13 +118,48 @@ namespace HealthCarePortal.Forms
             }
         }
 
+        private void ListViewNotifications_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewNotifications.SelectedIndices.Count == 0) return;
+
+            int idx = listViewNotifications.SelectedIndices[0];
+            var notif = _patient.Notifications
+                         .OrderByDescending(n => n.Timestamp)
+                         .ElementAt(idx);
+
+            switch (notif.Type)
+            {
+                case "Message":
+                    tabControlDashboard.SelectedTab = tabPageInbox;
+                    break;
+                case "Appointment":
+                    tabControlDashboard.SelectedTab = tabPageAppointments;
+                    break;
+                case "MedHistory":
+                    tabControlDashboard.SelectedTab = tabPageMedicalHistory;
+                    break;
+            }
+        }
+
         // Event handlers
-        //private void buttonNewMessage_Click(object sender, EventArgs e)
-        //{
-        //    var form = new MessageForm(_patient, /* recipient */ null);
-        //    if (form.ShowDialog() == DialogResult.OK)
-        //        LoadMessages();
-        //}
+        private void buttonNewMessage_Click(object sender, EventArgs e)
+        {
+            var form = new MessageForm(_patient, /* recipient */ null);
+            if (form.ShowDialog() == DialogResult.OK)
+                LoadMessages();
+        }
+
+        private void ListViewMessages_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewMessages.SelectedIndices.Count == 0) return;
+
+            int idx = listViewMessages.SelectedIndices[0];
+            var msg = _displayedMessages[idx];
+
+            using var detail = new MessageDetailForm(_patient, msg);
+            detail.ShowDialog();
+            LoadMessages();
+        }
 
         //private void buttonSchedule_Click(object sender, EventArgs e)
         //{

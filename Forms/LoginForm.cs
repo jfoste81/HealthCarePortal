@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HealthcarePortal.Models;
 using HealthCarePortal.Models;
 
 namespace HealthCarePortal.Forms
@@ -23,36 +22,64 @@ namespace HealthCarePortal.Forms
         {
             string username = textBoxUsername.Text.Trim();
             string password = textBoxPassword.Text;
+            string userType = comboBoxUserType.SelectedItem?.ToString();
 
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(username) 
+                || string.IsNullOrWhiteSpace(password)
+                || string.IsNullOrWhiteSpace(userType))
             {
-                MessageBox.Show("Please fill in all fields.");
+                MessageBox.Show("Please fill in username, password, and select a user type.",
+                                "Missing Information",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                 return;
             }
 
-            // 1) Ask the Portal to authenticate
+            // Authenticate by credentials
             User user = Portal.Instance.Authenticate(username, password);
-
-            // 2) Check the result
-            if (user is Patient patient)
+            if (user == null)
             {
-                //Open the patient dashboard, passing the Patient object
-                var dash = new DashboardPatientForm(patient);
-                dash.Show();
-                this.Hide();
-                Console.WriteLine("Patient logged in successfully."); 
-            }
-            else if (user is Doctor doctor)
-            {
-                var dash = new DashboardDoctorForm(doctor);
-                dash.Show();
-                this.Hide();
-                Console.WriteLine("Doctor logged in successfully."); 
-            }
-            else
-            {
-                MessageBox.Show("Invalid credentials.", "Login Failed",
+                MessageBox.Show("Invalid username or password.", "Login Failed",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Now verify the selected type matches the authenticated user
+            if (userType == "Patient")
+            {
+                if (user is Patient patient)
+                {
+                    var dash = new DashboardPatientForm(patient);
+                    dash.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show(
+                      "These credentials belong to a doctor. Please select 'Doctor' or use a patient account.",
+                      "Login Failed",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error
+                    );
+                }
+            }
+            else // userType == "Doctor"
+            {
+                if (user is Doctor doctor)
+                {
+                    var dash = new DashboardDoctorForm(doctor);
+                    dash.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show(
+                      "These credentials belong to a patient. Please select 'Patient' or use a doctor account.",
+                      "Login Failed",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error
+                    );
+                }
             }
         }
 
