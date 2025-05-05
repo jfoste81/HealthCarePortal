@@ -56,16 +56,16 @@ namespace HealthCarePortal.Forms
             }
         }
 
-        //private void ListViewPatients_DoubleClick(object sender, EventArgs e)
-        //{
-        //    if (listViewPatients.SelectedIndices.Count == 0) return;
-        //    int idx = listViewPatients.SelectedIndices[0];
-        //    var patient = _filteredPatients[idx];
+        private void ListViewPatients_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewPatients.SelectedIndices.Count == 0) return;
+            int idx = listViewPatients.SelectedIndices[0];
+            var patient = _filteredPatients[idx];
 
-        //    using var detail = new PatientDetailForm(_doctor, patient);
-        //    detail.ShowDialog();
-        //    LoadPatients();
-        //}
+            using var detail = new PatientDetailForm(_doctor, patient);
+            detail.ShowDialog();
+            LoadPatients();
+        }
 
         // Inbox Tab 
         private void LoadInbox()
@@ -94,9 +94,9 @@ namespace HealthCarePortal.Forms
         private void ButtonNewMessage_Click(object sender, EventArgs e)
         {
             using var compose = new MessageForm(
-                sender: _doctor,   // doctor is sending
-                recipient: null,      // show all patients
-                subject: ""         // blank subject
+                sender: _doctor,         // doctor is sending
+                recipient: null,         // show all patients
+                subject: ""              // blank subject
             );
 
             if (compose.ShowDialog() == DialogResult.OK)
@@ -122,17 +122,13 @@ namespace HealthCarePortal.Forms
                 listViewTodayAppointments.Items.Add(item);
             }
 
-            // Notifications (in single-column ListView)
             // Notifications with separate columns
             listViewNotificationsOverview.Items.Clear();
             foreach (var n in _doctor.Notifications
                                      .OrderByDescending(nf => nf.Timestamp))
             {
-                // First column = timestamp
                 var item = new ListViewItem(n.Timestamp.ToString("g"));
-                // Second column = type
                 item.SubItems.Add(n.Type);
-                // Third column = description
                 item.SubItems.Add(n.Description);
 
                 listViewNotificationsOverview.Items.Add(item);

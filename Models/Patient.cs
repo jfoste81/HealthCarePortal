@@ -11,7 +11,6 @@ namespace HealthCarePortal.Models
         public int Id { get; set; }
         public string Address { get; set; }
         public List<Illness> MedicalHistory { get; } = new();
-        public float Balance { get; set; }
         public List<Prescription> Prescriptions { get; } = new();
 
         public Patient(string username, string password,
@@ -21,7 +20,6 @@ namespace HealthCarePortal.Models
           : base(username, password, name, age, gender, phone, email)
         {
             Address = address;
-            Balance = 0f;
         }
     }
 }

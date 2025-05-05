@@ -34,11 +34,6 @@
             this.listViewNotificationsOverview = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBoxMessagesOverview = new System.Windows.Forms.GroupBox();
-            this.listViewMessagesOverview = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBoxToday = new System.Windows.Forms.GroupBox();
             this.listViewTodayAppointments = new System.Windows.Forms.ListView();
             this.Time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -70,7 +65,6 @@
             this.tabControlDoctor.SuspendLayout();
             this.tabPageOverview.SuspendLayout();
             this.groupBoxNotificationsOverview.SuspendLayout();
-            this.groupBoxMessagesOverview.SuspendLayout();
             this.groupBoxToday.SuspendLayout();
             this.tabPagePatients.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -93,7 +87,6 @@
             // tabPageOverview
             // 
             this.tabPageOverview.Controls.Add(this.groupBoxNotificationsOverview);
-            this.tabPageOverview.Controls.Add(this.groupBoxMessagesOverview);
             this.tabPageOverview.Controls.Add(this.groupBoxToday);
             this.tabPageOverview.Location = new System.Drawing.Point(4, 22);
             this.tabPageOverview.Name = "tabPageOverview";
@@ -139,53 +132,12 @@
             this.columnHeader5.Text = "Type";
             this.columnHeader5.Width = 122;
             // 
-            // groupBoxMessagesOverview
-            // 
-            this.groupBoxMessagesOverview.Controls.Add(this.listViewMessagesOverview);
-            this.groupBoxMessagesOverview.Location = new System.Drawing.Point(7, 206);
-            this.groupBoxMessagesOverview.Name = "groupBoxMessagesOverview";
-            this.groupBoxMessagesOverview.Size = new System.Drawing.Size(521, 191);
-            this.groupBoxMessagesOverview.TabIndex = 1;
-            this.groupBoxMessagesOverview.TabStop = false;
-            this.groupBoxMessagesOverview.Text = "Recent Messages";
-            // 
-            // listViewMessagesOverview
-            // 
-            this.listViewMessagesOverview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listViewMessagesOverview.FullRowSelect = true;
-            this.listViewMessagesOverview.HideSelection = false;
-            this.listViewMessagesOverview.Location = new System.Drawing.Point(6, 19);
-            this.listViewMessagesOverview.MultiSelect = false;
-            this.listViewMessagesOverview.Name = "listViewMessagesOverview";
-            this.listViewMessagesOverview.Size = new System.Drawing.Size(509, 169);
-            this.listViewMessagesOverview.TabIndex = 0;
-            this.listViewMessagesOverview.UseCompatibleStateImageBehavior = false;
-            this.listViewMessagesOverview.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Date";
-            this.columnHeader1.Width = 126;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "From";
-            this.columnHeader2.Width = 127;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Subject";
-            this.columnHeader3.Width = 251;
-            // 
             // groupBoxToday
             // 
             this.groupBoxToday.Controls.Add(this.listViewTodayAppointments);
             this.groupBoxToday.Location = new System.Drawing.Point(7, 6);
             this.groupBoxToday.Name = "groupBoxToday";
-            this.groupBoxToday.Size = new System.Drawing.Size(521, 195);
+            this.groupBoxToday.Size = new System.Drawing.Size(521, 388);
             this.groupBoxToday.TabIndex = 0;
             this.groupBoxToday.TabStop = false;
             this.groupBoxToday.Text = "Today\'s Schedule";
@@ -200,7 +152,7 @@
             this.listViewTodayAppointments.Location = new System.Drawing.Point(7, 20);
             this.listViewTodayAppointments.MultiSelect = false;
             this.listViewTodayAppointments.Name = "listViewTodayAppointments";
-            this.listViewTodayAppointments.Size = new System.Drawing.Size(514, 169);
+            this.listViewTodayAppointments.Size = new System.Drawing.Size(508, 362);
             this.listViewTodayAppointments.TabIndex = 0;
             this.listViewTodayAppointments.UseCompatibleStateImageBehavior = false;
             this.listViewTodayAppointments.View = System.Windows.Forms.View.Details;
@@ -253,6 +205,7 @@
             this.listViewPatients.TabIndex = 0;
             this.listViewPatients.UseCompatibleStateImageBehavior = false;
             this.listViewPatients.View = System.Windows.Forms.View.Details;
+            this.listViewPatients.DoubleClick += new System.EventHandler(this.ListViewPatients_DoubleClick);
             // 
             // columnHeader6
             // 
@@ -433,7 +386,6 @@
             this.tabControlDoctor.ResumeLayout(false);
             this.tabPageOverview.ResumeLayout(false);
             this.groupBoxNotificationsOverview.ResumeLayout(false);
-            this.groupBoxMessagesOverview.ResumeLayout(false);
             this.groupBoxToday.ResumeLayout(false);
             this.tabPagePatients.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -450,13 +402,8 @@
         private System.Windows.Forms.TabPage tabPageInbox;
         private System.Windows.Forms.TabPage tabPagePatients;
         private System.Windows.Forms.TabPage tabPageSchedule;
-        private System.Windows.Forms.GroupBox groupBoxMessagesOverview;
         private System.Windows.Forms.GroupBox groupBoxToday;
         private System.Windows.Forms.GroupBox groupBoxNotificationsOverview;
-        private System.Windows.Forms.ListView listViewMessagesOverview;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ListView listViewTodayAppointments;
         private System.Windows.Forms.ColumnHeader Time;
         private System.Windows.Forms.ColumnHeader Patients;
