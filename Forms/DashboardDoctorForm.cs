@@ -221,7 +221,6 @@ namespace HealthCarePortal.Forms
 
                 // add notifications
                 patient.Notifications.Add(new Notification("Appointment"));
-                _doctor.Notifications.Add(new Notification("Appointment"));
 
                 LoadSchedule();
                 LoadOverview();

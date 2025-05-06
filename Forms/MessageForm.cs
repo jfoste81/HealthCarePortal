@@ -85,6 +85,13 @@ namespace HealthCarePortal.Forms
             recipient.Inbox.Add(msg);
             recipient.Notifications.Add(new Notification("Message"));
 
+            MessageBox.Show(
+                  "Your message has been sent.",
+                  "Message Sent",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information
+                );
+
             DialogResult = DialogResult.OK;
             Close();
         }

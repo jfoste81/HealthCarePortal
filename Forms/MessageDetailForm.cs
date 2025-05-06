@@ -60,14 +60,9 @@ namespace HealthCarePortal.Forms
 
             if (compose.ShowDialog() == DialogResult.OK)
             {
-                // notify user
-                MessageBox.Show(
-                  "Your reply has been sent.",
-                  "Reply Sent",
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Information
-                );
-            }
+                // if the user sent the message, close this form
+                Close();
+            }   
         }
     }
 }

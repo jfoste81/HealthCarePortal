@@ -83,17 +83,20 @@ namespace HealthCarePortal.Forms
             var doctor = Portal.Instance.Doctors
                 .First(d => d.Name == docName);
 
-            DateTime date = dateTimePickerDate.Value.Date;
+            DateTime date = dateTimePickerDate.Value.Date; // chosen date
+
+            // grab all time slots in a given date
             var booked = new HashSet<TimeSpan>(
                 doctor.Appointments
                       .Where(a => a.Timestamp.Date == date)
                       .Select(a => a.Timestamp.TimeOfDay)
             );
 
+            // add available time slots
             for (int hour = 8; hour <= 17; hour++)
             {
                 var slot = new TimeSpan(hour, 0, 0);
-                if (!booked.Contains(slot))
+                if (!booked.Contains(slot)) // not booked time slots
                     comboBoxTime.Items.Add(date.Add(slot).ToString("h:mm tt"));
             }
 
@@ -124,18 +127,6 @@ namespace HealthCarePortal.Forms
 
             if (!_isEdit)
             {
-                // Prevent double-booking
-                if (doctor.Appointments.Any(a => a.Timestamp == when))
-                {
-                    MessageBox.Show(
-                        $"Dr. {doctor.Name} already has an appointment at {when:t}.",
-                        "Time Conflict",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                    return;
-                }
-
                 // Create new appointment
                 int newId = Portal.Instance.Patients
                               .SelectMany(p => p.Appointments)
@@ -159,6 +150,14 @@ namespace HealthCarePortal.Forms
 
                 // Notify doctor
                 doctor.Notifications.Add(new Notification("Appointment"));
+
+                // Success 
+                MessageBox.Show(
+                  "Your appointment has been scheduled",
+                  "Appointment Scheduled",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information
+                );
             }
             else
             {
@@ -170,6 +169,12 @@ namespace HealthCarePortal.Forms
                 var patientObj = Portal.Instance.Patients
                                   .First(p => p.Name == _appt.PatientName);
                 patientObj.Notifications.Add(new Notification("Appointment"));
+                MessageBox.Show(
+                  "Appointment has been edited",
+                  "Edit Successful",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information
+                );
             }
 
             DialogResult = DialogResult.OK;

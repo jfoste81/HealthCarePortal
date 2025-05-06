@@ -189,7 +189,6 @@ namespace HealthCarePortal.Forms
                 doctor.Appointments.RemoveAll(a => a.Id == appt.Id);
 
             // add notifications
-            _patient.Notifications.Add(new Notification("Appointment"));
             if (doctor != null)
                 doctor.Notifications.Add(new Notification("Appointment"));
 
