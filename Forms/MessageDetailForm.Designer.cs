@@ -124,7 +124,7 @@
             this.Controls.Add(this.labelFrom);
             this.Name = "MessageDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "MessageDetailForm";
+            this.Text = "Message";
             this.ResumeLayout(false);
             this.PerformLayout();
 

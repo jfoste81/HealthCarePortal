@@ -170,7 +170,7 @@
             this.Controls.Add(this.groupBoxAppointment);
             this.Name = "AppointmentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AppointmentForm";
+            this.Text = "Appointment Form";
             this.groupBoxAppointment.ResumeLayout(false);
             this.groupBoxAppointment.PerformLayout();
             this.ResumeLayout(false);

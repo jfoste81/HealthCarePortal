@@ -132,7 +132,7 @@
             this.Controls.Add(this.groupBoxMessage);
             this.Name = "MessageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "MessageForm";
+            this.Text = "New Message";
             this.groupBoxMessage.ResumeLayout(false);
             this.groupBoxMessage.PerformLayout();
             this.ResumeLayout(false);

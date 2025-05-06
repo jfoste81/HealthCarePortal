@@ -406,7 +406,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DashboardPatientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DashboardPatientForm";
+            this.Text = "Patient Dashboard";
             this.tabControlDashboard.ResumeLayout(false);
             this.tabPageOverview.ResumeLayout(false);
             this.tabPageOverview.PerformLayout();

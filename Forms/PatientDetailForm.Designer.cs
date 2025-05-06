@@ -277,7 +277,7 @@
             this.Controls.Add(this.labelName);
             this.Name = "PatientDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "PatientDetailForm";
+            this.Text = "Patient Details";
             this.groupBoxHistory.ResumeLayout(false);
             this.groupBoxHistory.PerformLayout();
             this.ResumeLayout(false);

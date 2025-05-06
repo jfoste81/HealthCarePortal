@@ -308,8 +308,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "RegisterForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "RegisterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Register";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

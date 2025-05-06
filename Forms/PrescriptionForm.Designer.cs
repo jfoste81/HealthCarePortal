@@ -132,7 +132,7 @@
             this.Controls.Add(this.labelMedName);
             this.Name = "PrescriptionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "PrescriptionForm";
+            this.Text = "Prescription Form";
             this.ResumeLayout(false);
             this.PerformLayout();
 

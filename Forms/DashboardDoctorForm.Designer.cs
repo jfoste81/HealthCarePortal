@@ -384,7 +384,7 @@
             this.Controls.Add(this.tabControlDoctor);
             this.Name = "DashboardDoctorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DashboardDoctorForm";
+            this.Text = "Doctor Dashboard";
             this.tabControlDoctor.ResumeLayout(false);
             this.tabPageOverview.ResumeLayout(false);
             this.groupBoxNotificationsOverview.ResumeLayout(false);
