@@ -59,9 +59,9 @@
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView1 = new System.Windows.Forms.ListView();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControlDoctor.SuspendLayout();
             this.tabPageOverview.SuspendLayout();
             this.groupBoxNotificationsOverview.SuspendLayout();
@@ -156,7 +156,7 @@
             this.listViewTodayAppointments.TabIndex = 0;
             this.listViewTodayAppointments.UseCompatibleStateImageBehavior = false;
             this.listViewTodayAppointments.View = System.Windows.Forms.View.Details;
-            this.listViewTodayAppointments.DoubleClick += new System.EventHandler(this.ButtonEditAppointment_Click);
+            this.listViewTodayAppointments.DoubleClick += new System.EventHandler(this.ListViewTodayAppointments_DoubleClick);
             // 
             // Time
             // 
@@ -345,12 +345,17 @@
             // columnHeader15
             // 
             this.columnHeader15.Text = "Time";
-            this.columnHeader15.Width = 158;
+            this.columnHeader15.Width = 113;
             // 
             // columnHeader16
             // 
             this.columnHeader16.Text = "Patient";
-            this.columnHeader16.Width = 445;
+            this.columnHeader16.Width = 170;
+            // 
+            // Description
+            // 
+            this.Description.Text = "Description";
+            this.Description.Width = 322;
             // 
             // listView1
             // 
@@ -370,10 +375,6 @@
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
             // 
-            // Description
-            // 
-            this.Description.Text = "ColumnDescription";
-            // 
             // DashboardDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +383,7 @@
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.tabControlDoctor);
             this.Name = "DashboardDoctorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DashboardDoctorForm";
             this.tabControlDoctor.ResumeLayout(false);
             this.tabPageOverview.ResumeLayout(false);

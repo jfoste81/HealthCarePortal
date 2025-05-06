@@ -33,21 +33,21 @@
             this.labelPhone = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.groupBoxHistory = new System.Windows.Forms.GroupBox();
-            this.listViewIllness = new System.Windows.Forms.ListView();
-            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Diagnosis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.labelIllness = new System.Windows.Forms.Label();
-            this.listViewPrescriptions = new System.Windows.Forms.ListView();
-            this.buttonNewDiagnosis = new System.Windows.Forms.Button();
-            this.buttonEditDiagnosis = new System.Windows.Forms.Button();
-            this.buttonRemoveDiagnosis = new System.Windows.Forms.Button();
+            this.buttonRemovePrescription = new System.Windows.Forms.Button();
+            this.buttonEditPrescription = new System.Windows.Forms.Button();
+            this.buttonNewPrescription = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonRemoveDiagnosis = new System.Windows.Forms.Button();
+            this.buttonEditDiagnosis = new System.Windows.Forms.Button();
+            this.buttonNewDiagnosis = new System.Windows.Forms.Button();
+            this.listViewPrescriptions = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonNewPrescription = new System.Windows.Forms.Button();
-            this.buttonEditPrescription = new System.Windows.Forms.Button();
-            this.buttonRemovePrescription = new System.Windows.Forms.Button();
+            this.labelIllness = new System.Windows.Forms.Label();
+            this.listViewIllness = new System.Windows.Forms.ListView();
+            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Diagnosis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonClose = new System.Windows.Forms.Button();
             this.groupBoxHistory.SuspendLayout();
             this.SuspendLayout();
@@ -111,6 +111,124 @@
             this.groupBoxHistory.TabStop = false;
             this.groupBoxHistory.Text = "Medical History";
             // 
+            // buttonRemovePrescription
+            // 
+            this.buttonRemovePrescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonRemovePrescription.Location = new System.Drawing.Point(567, 296);
+            this.buttonRemovePrescription.Name = "buttonRemovePrescription";
+            this.buttonRemovePrescription.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemovePrescription.TabIndex = 9;
+            this.buttonRemovePrescription.Text = "Remove";
+            this.buttonRemovePrescription.UseVisualStyleBackColor = true;
+            this.buttonRemovePrescription.Click += new System.EventHandler(this.buttonRemovePrescription_Click);
+            // 
+            // buttonEditPrescription
+            // 
+            this.buttonEditPrescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonEditPrescription.Location = new System.Drawing.Point(468, 296);
+            this.buttonEditPrescription.Name = "buttonEditPrescription";
+            this.buttonEditPrescription.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditPrescription.TabIndex = 8;
+            this.buttonEditPrescription.Text = "Edit";
+            this.buttonEditPrescription.UseVisualStyleBackColor = true;
+            this.buttonEditPrescription.Click += new System.EventHandler(this.buttonEditPrescription_Click);
+            // 
+            // buttonNewPrescription
+            // 
+            this.buttonNewPrescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonNewPrescription.Location = new System.Drawing.Point(368, 296);
+            this.buttonNewPrescription.Name = "buttonNewPrescription";
+            this.buttonNewPrescription.Size = new System.Drawing.Size(75, 23);
+            this.buttonNewPrescription.TabIndex = 7;
+            this.buttonNewPrescription.Text = "New";
+            this.buttonNewPrescription.UseVisualStyleBackColor = true;
+            this.buttonNewPrescription.Click += new System.EventHandler(this.buttonNewPrescription_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(303, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Prescriptions:";
+            // 
+            // buttonRemoveDiagnosis
+            // 
+            this.buttonRemoveDiagnosis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonRemoveDiagnosis.Location = new System.Drawing.Point(195, 296);
+            this.buttonRemoveDiagnosis.Name = "buttonRemoveDiagnosis";
+            this.buttonRemoveDiagnosis.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemoveDiagnosis.TabIndex = 5;
+            this.buttonRemoveDiagnosis.Text = "Remove";
+            this.buttonRemoveDiagnosis.UseVisualStyleBackColor = true;
+            this.buttonRemoveDiagnosis.Click += new System.EventHandler(this.buttonRemoveDiagnosis_Click);
+            // 
+            // buttonEditDiagnosis
+            // 
+            this.buttonEditDiagnosis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonEditDiagnosis.Location = new System.Drawing.Point(112, 296);
+            this.buttonEditDiagnosis.Name = "buttonEditDiagnosis";
+            this.buttonEditDiagnosis.Size = new System.Drawing.Size(61, 23);
+            this.buttonEditDiagnosis.TabIndex = 4;
+            this.buttonEditDiagnosis.Text = "Edit";
+            this.buttonEditDiagnosis.UseVisualStyleBackColor = true;
+            this.buttonEditDiagnosis.Click += new System.EventHandler(this.buttonEditDiagnosis_Click);
+            // 
+            // buttonNewDiagnosis
+            // 
+            this.buttonNewDiagnosis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buttonNewDiagnosis.Location = new System.Drawing.Point(27, 296);
+            this.buttonNewDiagnosis.Name = "buttonNewDiagnosis";
+            this.buttonNewDiagnosis.Size = new System.Drawing.Size(64, 23);
+            this.buttonNewDiagnosis.TabIndex = 3;
+            this.buttonNewDiagnosis.Text = "New";
+            this.buttonNewDiagnosis.UseVisualStyleBackColor = true;
+            this.buttonNewDiagnosis.Click += new System.EventHandler(this.buttonNewDiagnosis_Click);
+            // 
+            // listViewPrescriptions
+            // 
+            this.listViewPrescriptions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewPrescriptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.listViewPrescriptions.FullRowSelect = true;
+            this.listViewPrescriptions.HideSelection = false;
+            this.listViewPrescriptions.Location = new System.Drawing.Point(306, 36);
+            this.listViewPrescriptions.MultiSelect = false;
+            this.listViewPrescriptions.Name = "listViewPrescriptions";
+            this.listViewPrescriptions.Size = new System.Drawing.Size(437, 253);
+            this.listViewPrescriptions.TabIndex = 2;
+            this.listViewPrescriptions.UseCompatibleStateImageBehavior = false;
+            this.listViewPrescriptions.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Medication";
+            this.columnHeader1.Width = 145;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Dosage";
+            this.columnHeader2.Width = 103;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Notes";
+            this.columnHeader3.Width = 185;
+            // 
+            // labelIllness
+            // 
+            this.labelIllness.AutoSize = true;
+            this.labelIllness.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.labelIllness.Location = new System.Drawing.Point(6, 17);
+            this.labelIllness.Name = "labelIllness";
+            this.labelIllness.Size = new System.Drawing.Size(66, 17);
+            this.labelIllness.TabIndex = 1;
+            this.labelIllness.Text = "Illnesses:";
+            // 
             // listViewIllness
             // 
             this.listViewIllness.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -137,121 +255,6 @@
             this.Diagnosis.Text = "Diagnosis";
             this.Diagnosis.Width = 157;
             // 
-            // labelIllness
-            // 
-            this.labelIllness.AutoSize = true;
-            this.labelIllness.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelIllness.Location = new System.Drawing.Point(6, 17);
-            this.labelIllness.Name = "labelIllness";
-            this.labelIllness.Size = new System.Drawing.Size(66, 17);
-            this.labelIllness.TabIndex = 1;
-            this.labelIllness.Text = "Illnesses:";
-            // 
-            // listViewPrescriptions
-            // 
-            this.listViewPrescriptions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listViewPrescriptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.listViewPrescriptions.FullRowSelect = true;
-            this.listViewPrescriptions.HideSelection = false;
-            this.listViewPrescriptions.Location = new System.Drawing.Point(306, 36);
-            this.listViewPrescriptions.MultiSelect = false;
-            this.listViewPrescriptions.Name = "listViewPrescriptions";
-            this.listViewPrescriptions.Size = new System.Drawing.Size(437, 253);
-            this.listViewPrescriptions.TabIndex = 2;
-            this.listViewPrescriptions.UseCompatibleStateImageBehavior = false;
-            this.listViewPrescriptions.View = System.Windows.Forms.View.Details;
-            // 
-            // buttonNewDiagnosis
-            // 
-            this.buttonNewDiagnosis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonNewDiagnosis.Location = new System.Drawing.Point(27, 296);
-            this.buttonNewDiagnosis.Name = "buttonNewDiagnosis";
-            this.buttonNewDiagnosis.Size = new System.Drawing.Size(64, 23);
-            this.buttonNewDiagnosis.TabIndex = 3;
-            this.buttonNewDiagnosis.Text = "New";
-            this.buttonNewDiagnosis.UseVisualStyleBackColor = true;
-            this.buttonNewDiagnosis.Click += new System.EventHandler(this.buttonNewDiagnosis_Click);
-            // 
-            // buttonEditDiagnosis
-            // 
-            this.buttonEditDiagnosis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonEditDiagnosis.Location = new System.Drawing.Point(112, 296);
-            this.buttonEditDiagnosis.Name = "buttonEditDiagnosis";
-            this.buttonEditDiagnosis.Size = new System.Drawing.Size(61, 23);
-            this.buttonEditDiagnosis.TabIndex = 4;
-            this.buttonEditDiagnosis.Text = "Edit";
-            this.buttonEditDiagnosis.UseVisualStyleBackColor = true;
-            this.buttonEditDiagnosis.Click += new System.EventHandler(this.buttonEditDiagnosis_Click);
-            // 
-            // buttonRemoveDiagnosis
-            // 
-            this.buttonRemoveDiagnosis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonRemoveDiagnosis.Location = new System.Drawing.Point(195, 296);
-            this.buttonRemoveDiagnosis.Name = "buttonRemoveDiagnosis";
-            this.buttonRemoveDiagnosis.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemoveDiagnosis.TabIndex = 5;
-            this.buttonRemoveDiagnosis.Text = "Remove";
-            this.buttonRemoveDiagnosis.UseVisualStyleBackColor = true;
-            this.buttonRemoveDiagnosis.Click += new System.EventHandler(this.buttonRemoveDiagnosis_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(303, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Prescriptions:";
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Medication";
-            this.columnHeader1.Width = 145;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Dosage";
-            this.columnHeader2.Width = 103;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Notes";
-            this.columnHeader3.Width = 185;
-            // 
-            // buttonNewPrescription
-            // 
-            this.buttonNewPrescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonNewPrescription.Location = new System.Drawing.Point(368, 296);
-            this.buttonNewPrescription.Name = "buttonNewPrescription";
-            this.buttonNewPrescription.Size = new System.Drawing.Size(75, 23);
-            this.buttonNewPrescription.TabIndex = 7;
-            this.buttonNewPrescription.Text = "New";
-            this.buttonNewPrescription.UseVisualStyleBackColor = true;
-            // 
-            // buttonEditPrescription
-            // 
-            this.buttonEditPrescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonEditPrescription.Location = new System.Drawing.Point(468, 296);
-            this.buttonEditPrescription.Name = "buttonEditPrescription";
-            this.buttonEditPrescription.Size = new System.Drawing.Size(75, 23);
-            this.buttonEditPrescription.TabIndex = 8;
-            this.buttonEditPrescription.Text = "Edit";
-            this.buttonEditPrescription.UseVisualStyleBackColor = true;
-            // 
-            // buttonRemovePrescription
-            // 
-            this.buttonRemovePrescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonRemovePrescription.Location = new System.Drawing.Point(567, 296);
-            this.buttonRemovePrescription.Name = "buttonRemovePrescription";
-            this.buttonRemovePrescription.Size = new System.Drawing.Size(75, 23);
-            this.buttonRemovePrescription.TabIndex = 9;
-            this.buttonRemovePrescription.Text = "Remove";
-            this.buttonRemovePrescription.UseVisualStyleBackColor = true;
-            // 
             // buttonClose
             // 
             this.buttonClose.Location = new System.Drawing.Point(713, 420);
@@ -273,6 +276,7 @@
             this.Controls.Add(this.labelAgeGender);
             this.Controls.Add(this.labelName);
             this.Name = "PatientDetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PatientDetailForm";
             this.groupBoxHistory.ResumeLayout(false);
             this.groupBoxHistory.PerformLayout();

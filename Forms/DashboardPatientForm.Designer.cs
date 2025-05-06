@@ -46,10 +46,12 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageAppointments = new System.Windows.Forms.TabPage();
+            this.buttonCancelAppt = new System.Windows.Forms.Button();
             this.buttonSchedule = new System.Windows.Forms.Button();
             this.listViewAppointments = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageMedicalHistory = new System.Windows.Forms.TabPage();
             this.groupBoxPrescriptions = new System.Windows.Forms.GroupBox();
             this.listViewPrescriptions = new System.Windows.Forms.ListView();
@@ -61,8 +63,6 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonCancelAppt = new System.Windows.Forms.Button();
-            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControlDashboard.SuspendLayout();
             this.tabPageOverview.SuspendLayout();
             this.tabPageInbox.SuspendLayout();
@@ -160,6 +160,7 @@
             this.listViewOverviewAppointments.TabIndex = 2;
             this.listViewOverviewAppointments.UseCompatibleStateImageBehavior = false;
             this.listViewOverviewAppointments.View = System.Windows.Forms.View.Details;
+            this.listViewOverviewAppointments.DoubleClick += new System.EventHandler(this.ListViewOverviewAppointments_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -245,6 +246,17 @@
             this.tabPageAppointments.Text = "Appointments";
             this.tabPageAppointments.UseVisualStyleBackColor = true;
             // 
+            // buttonCancelAppt
+            // 
+            this.buttonCancelAppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonCancelAppt.Location = new System.Drawing.Point(690, 367);
+            this.buttonCancelAppt.Name = "buttonCancelAppt";
+            this.buttonCancelAppt.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelAppt.TabIndex = 2;
+            this.buttonCancelAppt.Text = "Cancel Appt";
+            this.buttonCancelAppt.UseVisualStyleBackColor = true;
+            this.buttonCancelAppt.Click += new System.EventHandler(this.ButtonCancelAppt_Click);
+            // 
             // buttonSchedule
             // 
             this.buttonSchedule.Location = new System.Drawing.Point(609, 367);
@@ -261,8 +273,10 @@
             this.columnHeader8,
             this.columnHeader9,
             this.Description});
+            this.listViewAppointments.FullRowSelect = true;
             this.listViewAppointments.HideSelection = false;
             this.listViewAppointments.Location = new System.Drawing.Point(3, 3);
+            this.listViewAppointments.MultiSelect = false;
             this.listViewAppointments.Name = "listViewAppointments";
             this.listViewAppointments.Size = new System.Drawing.Size(762, 359);
             this.listViewAppointments.TabIndex = 0;
@@ -278,6 +292,11 @@
             // 
             this.columnHeader9.Text = "Doctor";
             this.columnHeader9.Width = 182;
+            // 
+            // Description
+            // 
+            this.Description.Text = "Description";
+            this.Description.Width = 335;
             // 
             // tabPageMedicalHistory
             // 
@@ -377,17 +396,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
-            // buttonCancelAppt
-            // 
-            this.buttonCancelAppt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonCancelAppt.Location = new System.Drawing.Point(690, 367);
-            this.buttonCancelAppt.Name = "buttonCancelAppt";
-            this.buttonCancelAppt.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancelAppt.TabIndex = 2;
-            this.buttonCancelAppt.Text = "Cancel";
-            this.buttonCancelAppt.UseVisualStyleBackColor = true;
-            this.buttonCancelAppt.Click += new System.EventHandler(this.ButtonCancelAppt_Click);
-            // 
             // DashboardPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,6 +405,7 @@
             this.Controls.Add(this.tabControlDashboard);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DashboardPatientForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DashboardPatientForm";
             this.tabControlDashboard.ResumeLayout(false);
             this.tabPageOverview.ResumeLayout(false);

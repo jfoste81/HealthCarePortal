@@ -33,12 +33,12 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
             this.labelTime = new System.Windows.Forms.Label();
-            this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
             this.groupBoxAppointment = new System.Windows.Forms.GroupBox();
-            this.labelDescription = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.comboBoxTime = new System.Windows.Forms.ComboBox();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.labelDescription = new System.Windows.Forms.Label();
             this.groupBoxAppointment.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,27 +91,15 @@
             this.labelTime.TabIndex = 4;
             this.labelTime.Text = "Time:";
             // 
-            // dateTimePickerTime
-            // 
-            this.dateTimePickerTime.CustomFormat = "hh:mm tt";
-            this.dateTimePickerTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.dateTimePickerTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerTime.Location = new System.Drawing.Point(529, 31);
-            this.dateTimePickerTime.Name = "dateTimePickerTime";
-            this.dateTimePickerTime.ShowUpDown = true;
-            this.dateTimePickerTime.Size = new System.Drawing.Size(82, 23);
-            this.dateTimePickerTime.TabIndex = 5;
-            this.dateTimePickerTime.ValueChanged += new System.EventHandler(this.DateTimePickerTime_ValueChanged);
-            // 
             // groupBoxAppointment
             // 
             this.groupBoxAppointment.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxAppointment.Controls.Add(this.comboBoxTime);
             this.groupBoxAppointment.Controls.Add(this.buttonSave);
             this.groupBoxAppointment.Controls.Add(this.buttonCancel);
             this.groupBoxAppointment.Controls.Add(this.textBoxDescription);
             this.groupBoxAppointment.Controls.Add(this.labelDescription);
             this.groupBoxAppointment.Controls.Add(this.comboBoxDoctor);
-            this.groupBoxAppointment.Controls.Add(this.dateTimePickerTime);
             this.groupBoxAppointment.Controls.Add(this.labelDoctor);
             this.groupBoxAppointment.Controls.Add(this.labelTime);
             this.groupBoxAppointment.Controls.Add(this.dateTimePickerDate);
@@ -123,36 +111,14 @@
             this.groupBoxAppointment.TabStop = false;
             this.groupBoxAppointment.Text = "Appointment";
             // 
-            // labelDescription
+            // comboBoxTime
             // 
-            this.labelDescription.AutoSize = true;
-            this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelDescription.Location = new System.Drawing.Point(72, 97);
-            this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(93, 20);
-            this.labelDescription.TabIndex = 6;
-            this.labelDescription.Text = "Description:";
-            // 
-            // textBoxDescription
-            // 
-            this.textBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxDescription.Location = new System.Drawing.Point(76, 121);
-            this.textBoxDescription.Multiline = true;
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(535, 217);
-            this.textBoxDescription.TabIndex = 7;
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonCancel.Location = new System.Drawing.Point(529, 371);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(82, 23);
-            this.buttonCancel.TabIndex = 8;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.comboBoxTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.comboBoxTime.FormattingEnabled = true;
+            this.comboBoxTime.Location = new System.Drawing.Point(528, 31);
+            this.comboBoxTime.Name = "comboBoxTime";
+            this.comboBoxTime.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxTime.TabIndex = 10;
             // 
             // buttonSave
             // 
@@ -165,6 +131,37 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonCancel.Location = new System.Drawing.Point(529, 371);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(82, 23);
+            this.buttonCancel.TabIndex = 8;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBoxDescription.Location = new System.Drawing.Point(76, 121);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxDescription.Size = new System.Drawing.Size(535, 217);
+            this.textBoxDescription.TabIndex = 7;
+            // 
+            // labelDescription
+            // 
+            this.labelDescription.AutoSize = true;
+            this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelDescription.Location = new System.Drawing.Point(72, 97);
+            this.labelDescription.Name = "labelDescription";
+            this.labelDescription.Size = new System.Drawing.Size(93, 20);
+            this.labelDescription.TabIndex = 6;
+            this.labelDescription.Text = "Description:";
+            // 
             // AppointmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,6 +169,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBoxAppointment);
             this.Name = "AppointmentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AppointmentForm";
             this.groupBoxAppointment.ResumeLayout(false);
             this.groupBoxAppointment.PerformLayout();
@@ -186,11 +184,11 @@
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.DateTimePicker dateTimePickerDate;
         private System.Windows.Forms.Label labelTime;
-        private System.Windows.Forms.DateTimePicker dateTimePickerTime;
         private System.Windows.Forms.GroupBox groupBoxAppointment;
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Label labelDescription;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.ComboBox comboBoxTime;
     }
 }

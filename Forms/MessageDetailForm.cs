@@ -22,7 +22,7 @@ namespace HealthCarePortal.Forms
             _currentUser = currentUser;
             _message = message;
 
-            // Populate the UI
+            // populate UI
             labelFrom.Text = $"From: {_message.Author}";
             labelDate.Text = $"Date: {_message.Timestamp:g}";
             textBoxSubject.Text = _message.Subject;
@@ -31,7 +31,7 @@ namespace HealthCarePortal.Forms
 
         private void buttonReply_Click(object sender, EventArgs e)
         {
-            // Look up the original sender as a User
+            // look up the original sender as a User
             var recipient = (User)Portal.Instance.Doctors
                                 .FirstOrDefault(d => d.Username == _message.Author)
                           ?? Portal.Instance.Patients
@@ -48,10 +48,10 @@ namespace HealthCarePortal.Forms
                 return;
             }
 
-            // Prefill subject
+            // prefill subject
             string replySubject = "Re: " + _message.Subject;
 
-            // Open the shared MessageForm for composing the reply
+            // open MessageForm for reply
             using var compose = new MessageForm(
                 sender: _currentUser,
                 recipient: recipient,
@@ -60,7 +60,7 @@ namespace HealthCarePortal.Forms
 
             if (compose.ShowDialog() == DialogResult.OK)
             {
-                // Notify user
+                // notify user
                 MessageBox.Show(
                   "Your reply has been sent.",
                   "Reply Sent",

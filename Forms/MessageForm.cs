@@ -23,7 +23,7 @@ namespace HealthCarePortal.Forms
             _sender = sender;
             _fixedRecipient = recipient;
 
-            // Populate the "To" dropdown
+            // populate the "To" dropdown
             if (_fixedRecipient != null)
             {
                 comboBoxTo.Items.Add(_fixedRecipient.Username);
@@ -32,7 +32,7 @@ namespace HealthCarePortal.Forms
             }
             else
             {
-                // if sender is a patient, list doctors; if doctor, list patients
+                // if sender is a patient, list doctors -> if doctor, vice versa
                 var choices = sender is Patient
                 ? Portal.Instance.Doctors.Select(d => d.Username)
                     : Portal.Instance.Patients.Select(p => p.Username);
@@ -40,7 +40,7 @@ namespace HealthCarePortal.Forms
                 comboBoxTo.Items.AddRange(choices.ToArray());
             }
 
-            // Prefill subject for replies
+            // prefill subject for replies
             textBoxSubject.Text = subject;
         }
 
@@ -63,7 +63,7 @@ namespace HealthCarePortal.Forms
                 return;
             }
 
-            // Find the recipient object
+            // find the recipient object
             var recipient = (User)Portal.Instance.Doctors
                                 .FirstOrDefault(d => d.Username == toUser)
                           ?? Portal.Instance.Patients
@@ -80,13 +80,10 @@ namespace HealthCarePortal.Forms
                 return;
             }
 
-            // Create & deliver the message
+            // create & deliver the message
             var msg = new UserMessage(_sender.Username, subj, body);
             recipient.Inbox.Add(msg);
-            recipient.Notifications.Add(new Notification(
-                "Message",
-                $"New message from {_sender.Name}"
-            ));
+            recipient.Notifications.Add(new Notification("Message"));
 
             DialogResult = DialogResult.OK;
             Close();

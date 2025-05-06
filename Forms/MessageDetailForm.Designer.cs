@@ -123,6 +123,7 @@
             this.Controls.Add(this.labelDate);
             this.Controls.Add(this.labelFrom);
             this.Name = "MessageDetailForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MessageDetailForm";
             this.ResumeLayout(false);
             this.PerformLayout();

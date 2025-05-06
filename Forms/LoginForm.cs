@@ -35,7 +35,7 @@ namespace HealthCarePortal.Forms
                 return;
             }
 
-            // Authenticate by credentials
+            // authenticate by credentials
             User user = Portal.Instance.Authenticate(username, password);
             if (user == null)
             {
@@ -44,7 +44,7 @@ namespace HealthCarePortal.Forms
                 return;
             }
 
-            // Now verify the selected type matches the authenticated user
+            // verify the selected type matches authenticated user
             if (userType == "Patient")
             {
                 if (user is Patient patient)
@@ -85,14 +85,9 @@ namespace HealthCarePortal.Forms
 
         private void buttonCreateAccount_Click(object sender, EventArgs e)
         {
-            // Open the RegisterForm
+            // open RegisterForm
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

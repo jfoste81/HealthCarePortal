@@ -25,13 +25,13 @@ namespace HealthCarePortal.Forms
 
             listViewNotificationsOverview.View = View.Details;
 
-            // Logout 
+            // logout 
             buttonLogout.Click += (s, e) => {
                 Close();
                 new LoginForm().Show();
             };
 
-            // Initial load of all tabs
+            // initial load of all tabs
             LoadOverview();
             LoadPatients();
             LoadInbox();
@@ -109,7 +109,7 @@ namespace HealthCarePortal.Forms
         // Overview Tab 
         private void LoadOverview()
         {
-            // Today's Appointments
+            // today's Appointments
             listViewTodayAppointments.Items.Clear();
             var todayAppts = _doctor.Patients
                 .SelectMany(p => p.Appointments)
@@ -122,21 +122,26 @@ namespace HealthCarePortal.Forms
                 listViewTodayAppointments.Items.Add(item);
             }
 
-            // Notifications with separate columns
+            // notifications 
             listViewNotificationsOverview.Items.Clear();
             foreach (var n in _doctor.Notifications
                                      .OrderByDescending(nf => nf.Timestamp))
             {
                 var item = new ListViewItem(n.Timestamp.ToString("g"));
                 item.SubItems.Add(n.Type);
-                item.SubItems.Add(n.Description);
 
                 listViewNotificationsOverview.Items.Add(item);
             }
         }
 
+        private void ListViewTodayAppointments_DoubleClick(object sender, EventArgs e)
+        {
+            tabControlDoctor.SelectedTab = tabPageSchedule;
+        }
+
         private void NotificationsOverview_DoubleClick(object sender, EventArgs e)
         {
+            // move to appropriate tab if notification is selected
             if (listViewNotificationsOverview.SelectedIndices.Count == 0) return;
             int idx = listViewNotificationsOverview.SelectedIndices[0];
             var notif = _doctor.Notifications
@@ -215,14 +220,8 @@ namespace HealthCarePortal.Forms
                        .Appointments.Remove(appt);
 
                 // add notifications
-                patient.Notifications.Add(new Notification(
-                    "Appointment",
-                    $"Your appointment on {appt.Timestamp:g} was cancelled by Dr. {_doctor.Name}."
-                ));
-                _doctor.Notifications.Add(new Notification(
-                    "Appointment",
-                    $"You cancelled the appointment on {appt.Timestamp:g} with {patient.Name}."
-                ));
+                patient.Notifications.Add(new Notification("Appointment"));
+                _doctor.Notifications.Add(new Notification("Appointment"));
 
                 LoadSchedule();
                 LoadOverview();

@@ -23,16 +23,16 @@ namespace HealthCarePortal.Forms
             _doctor = doctor;
             _patient = patient;
 
-            // Demographics
+            // demographics
             labelName.Text = $"Name: {_patient.Name}";
             labelAgeGender.Text = $"Age/Gender: {_patient.Age} / {_patient.Gender}";
             labelPhone.Text = $"Phone: {_patient.Phone}";
             labelEmail.Text = $"Email: {_patient.Email}";
 
-            // Close Button
+            // close Button
             buttonClose.Click += (s, e) => Close();
 
-            // Initial load
+            // initial load
             LoadMedicalHistory();
             LoadPrescriptions();
         }
@@ -74,10 +74,7 @@ namespace HealthCarePortal.Forms
             var ill = new Illness(name);
             _patient.MedicalHistory.Add(ill);
 
-            _patient.Notifications.Add(new Notification(
-                "MedHistory",
-                $"Dr. {_doctor.Name} added diagnosis '{name}'."
-            ));
+            _patient.Notifications.Add(new Notification("MedHistory"));
 
             LoadMedicalHistory();
         }
@@ -108,39 +105,41 @@ namespace HealthCarePortal.Forms
             if (res != DialogResult.Yes) return;
 
             _patient.MedicalHistory.Remove(ill);
-            _patient.Notifications.Add(new Notification(
-                "MedHistory",
-                $"Dr. {_doctor.Name} removed diagnosis '{ill.Name}'."
-            ));
+            _patient.Notifications.Add(new Notification("MedHistory"));
             LoadMedicalHistory();
         }
 
         // Prescription Buttons
 
-        //private void buttonNewPrescription_Click(object sender, EventArgs e)
-        //{
-        //    using var form = new PrescriptionForm(
-        //       prescriber: _doctor,
-        //       patient: _patient
-        //   );
-        //    if (form.ShowDialog() == DialogResult.OK)
-        //        LoadPrescriptions();
-        //}
+        private void buttonNewPrescription_Click(object sender, EventArgs e)
+        {
+            using var form = new PrescriptionForm(
+               prescriber: _doctor,
+               patient: _patient
+           );
+            if (form.ShowDialog() == DialogResult.OK)
+                LoadPrescriptions();
+        }
 
-        //private void buttonEditPrescription_Click(object sender, EventArgs e)
-        //{
-        //    if (listViewPrescriptions.SelectedIndices.Count == 0) return;
-        //    var rx = _patient.Prescriptions[listViewPrescriptions.SelectedIndices[0]];
+        private void buttonEditPrescription_Click(object sender, EventArgs e)
+        {
+            // something is selected
+            if (listViewPrescriptions.SelectedIndices.Count == 0) return;
 
-        //    // Overload PrescriptionForm to accept an existing prescription for editing
-        //    using var form = new PrescriptionForm(
-        //        prescriber: _doctor,
-        //        patient: _patient,
-        //        prescription: rx
-        //    );
-        //    if (form.ShowDialog() == DialogResult.OK)
-        //        LoadPrescriptions();
-        //}
+            // grab the Prescription object 
+            var rx = _patient.Prescriptions[listViewPrescriptions.SelectedIndices[0]];
+
+            // open form in edit mode
+            using var form = new PrescriptionForm(
+                prescriber: _doctor,
+                patient: _patient,
+                existing: rx        // pass in the one to edit
+            );
+
+            if (form.ShowDialog() == DialogResult.OK)
+                LoadPrescriptions();    // refresh the list after editing
+        }
+
 
         private void buttonRemovePrescription_Click(object sender, EventArgs e)
         {
@@ -156,10 +155,7 @@ namespace HealthCarePortal.Forms
             if (res != DialogResult.Yes) return;
 
             _patient.Prescriptions.Remove(rx);
-            _patient.Notifications.Add(new Notification(
-                "Prescription",
-                $"Dr. {_doctor.Name} removed prescription '{rx.Name}'."
-            ));
+            _patient.Notifications.Add(new Notification("Prescription"));
             LoadPrescriptions();
         }
     }

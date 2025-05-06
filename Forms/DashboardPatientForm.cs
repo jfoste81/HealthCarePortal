@@ -22,32 +22,29 @@ namespace HealthCarePortal.Forms
             _patient = patient;
             Text = $"Welcome, {_patient.Name}";
 
-            // Populate each tab
+            // populate each tab
             LoadOverview();
             LoadMessages();
             LoadAppointments();
             LoadMedicalHistory();
-            LoadNotifications();
         }
 
         private void LoadOverview()
         {
-            // e.g. show next 3 appointments
+            // show next 5 appointments
             listViewOverviewAppointments.Items.Clear();
             foreach (var appt in _patient.Appointments
                                         .OrderBy(a => a.Timestamp)
-                                        .Take(3))
+                                        .Take(5))
             {
                 var item = new ListViewItem(appt.Timestamp.ToString("g"));
                 item.SubItems.Add(appt.DoctorName);
                 listViewOverviewAppointments.Items.Add(item);
             }
 
-            // recent notifications
+            // notifications
             listViewNotifications.Items.Clear();
-            foreach (var n in _patient.Notifications
-                                     .OrderByDescending(nf => nf.Timestamp)
-                                     .Take(3))
+            foreach (var n in _patient.Notifications.OrderByDescending(nf => nf.Timestamp))
             {
                 var item = new ListViewItem(n.Timestamp.ToString("g"));
                 item.SubItems.Add(n.Type);
@@ -57,7 +54,7 @@ namespace HealthCarePortal.Forms
 
         private void LoadMessages()
         {
-            // Sort descending once and keep it
+            // sort descending 
             _displayedMessages = _patient.Inbox
                                          .OrderByDescending(m => m.Timestamp)
                                          .ToList();
@@ -107,16 +104,9 @@ namespace HealthCarePortal.Forms
             }
         }
 
-        private void LoadNotifications()
+        private void ListViewOverviewAppointments_DoubleClick(object sender, EventArgs e)
         {
-            listViewNotifications.Items.Clear();
-            foreach (var n in _patient.Notifications)
-            {
-                var item = new ListViewItem(n.Timestamp.ToString("g"));
-                item.SubItems.Add(n.Type);
-                item.SubItems.Add(n.Description);
-                listViewNotifications.Items.Add(item);
-            }
+            tabControlDashboard.SelectedTab = tabPageAppointments;
         }
 
         private void ListViewNotifications_DoubleClick(object sender, EventArgs e)
@@ -139,10 +129,12 @@ namespace HealthCarePortal.Forms
                 case "MedHistory":
                     tabControlDashboard.SelectedTab = tabPageMedicalHistory;
                     break;
+                case "Prescription":
+                    tabControlDashboard.SelectedTab = tabPageMedicalHistory;
+                    break;
             }
         }
 
-        // Event handlers
         private void buttonNewMessage_Click(object sender, EventArgs e)
         {
             var form = new MessageForm(_patient, /* recipient */ null);
@@ -171,16 +163,14 @@ namespace HealthCarePortal.Forms
 
         private void ButtonCancelAppt_Click(object sender, EventArgs e)
         {
-            // No selection? nothing to do.
             if (listViewAppointments.SelectedIndices.Count == 0) return;
 
-            // Find the appointment in the same order you displayed it
             int idx = listViewAppointments.SelectedIndices[0];
             var appt = _patient.Appointments
                                .OrderBy(a => a.Timestamp)
                                .ElementAt(idx);
 
-            // Confirm with the user
+            // comnfirm with user
             var result = MessageBox.Show(
                 $"Cancel your appointment on {appt.Timestamp:g} with Dr. {appt.DoctorName}?",
                 "Confirm Cancellation",
@@ -189,27 +179,21 @@ namespace HealthCarePortal.Forms
             );
             if (result != DialogResult.Yes) return;
 
-            // Remove from patient
+            // remove from patient
             _patient.Appointments.Remove(appt);
 
-            // Also remove from the doctor’s schedule
+            // remove from doctor’s schedule
             var doctor = Portal.Instance.Doctors
                              .FirstOrDefault(d => d.Name == appt.DoctorName);
             if (doctor != null)
                 doctor.Appointments.RemoveAll(a => a.Id == appt.Id);
 
-            // Add notifications
-            _patient.Notifications.Add(new Notification(
-                "Appointment",
-                $"You cancelled your appointment on {appt.Timestamp:g} with Dr. {appt.DoctorName}."
-            ));
+            // add notifications
+            _patient.Notifications.Add(new Notification("Appointment"));
             if (doctor != null)
-                doctor.Notifications.Add(new Notification(
-                    "Appointment",
-                    $"{_patient.Name} cancelled the appointment on {appt.Timestamp:g}."
-                ));
+                doctor.Notifications.Add(new Notification("Appointment"));
 
-            // Refresh UI
+            // refresh UI
             LoadAppointments();
             LoadOverview();
         }
@@ -219,6 +203,13 @@ namespace HealthCarePortal.Forms
         {
             Close();
             new LoginForm().Show();
+        }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            // reload overview when form goes back into focus
+            base.OnActivated(e);
+            LoadOverview();
         }
     }
 }

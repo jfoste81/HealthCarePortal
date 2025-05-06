@@ -26,13 +26,14 @@ namespace HealthCarePortal.Forms
         private void ComboBoxUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateExtraFieldLabel();
-            // Show the textbox only when “Other” is selected
+            // show the textbox only when “Other” is selected
             textBoxGenderCustom.Visible =
                 comboBoxGender.SelectedItem?.ToString() == "Other";
         }
 
         private void UpdateExtraFieldLabel()
         {
+            // extra field for Patient is Address, for Doctor is Specialty
             bool isPatient = comboBoxUserType.SelectedItem.ToString() == "Patient";
             labelExtraField.Text = isPatient ? "Address:" : "Specialty:";
             textBoxExtraField.Text = "";
@@ -46,7 +47,7 @@ namespace HealthCarePortal.Forms
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            // Gather common fields
+            // gather common fields
             string username = textBoxUsername.Text.Trim();
             string password = textBoxPassword.Text;
             string confirm = textBoxConfirmPassword.Text;
@@ -60,7 +61,7 @@ namespace HealthCarePortal.Forms
             string userType = comboBoxUserType.SelectedItem.ToString();
             string extra = textBoxExtraField.Text.Trim();  // address or specialty
 
-            // Basic validation
+            // basic validation
             if (string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(password) ||
                 password != confirm ||
@@ -79,7 +80,7 @@ namespace HealthCarePortal.Forms
                 return;
             }
 
-            // Create and register the User 
+            // create and register User 
             bool added;
             if (userType == "Patient")
             {
