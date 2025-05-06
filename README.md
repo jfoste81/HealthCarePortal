@@ -3,7 +3,9 @@
 
 A Healthcare Portal recreation based on my personal experience with healthcare patient portals used by doctor's office, written in C# and utlizing WinForms for the GUI. 
 
-### To install and run this project
+For a video presentation of this project click [here](https://drive.google.com/file/d/1zpKCCyDUvNZUHnJaiMwYHU7s9XPnmsgQ/view?usp=sharing)
+
+ ## To install and run this project
 
 * Download the code from the github repository and run it in Visual Studio (I used the Start button in Debug mode personally 🙂) 
 * You will need to register a patient and doctor to gain most of the functionality of the project
